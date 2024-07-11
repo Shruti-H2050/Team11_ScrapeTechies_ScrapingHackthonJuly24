@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 @Test
 public class ScrapeTest {
-
+	
 	 public static WebDriver driver;
 	  
 	 public static void launchDriver() {
@@ -42,9 +42,6 @@ public class ScrapeTest {
 		  System.out.println(raw_ids);
 	 }
 
-	 public static void main(String[] args) throws IOException {
-	launchDriver();
-	parseDataOnPage();
-}
+
 
 }
