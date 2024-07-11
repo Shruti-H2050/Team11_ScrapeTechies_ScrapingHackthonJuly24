@@ -12,15 +12,58 @@ import pojo.RecipeData;
 
 public class ScraperJsoup {
 	
-	public List<RecipeData> extractRecipeData() {
+	public List<RecipeData> extractRecipeData(String baseUrl) {
 	
-	try {
-		Document recipeDoc = Jsoup.connect("https://www.tarladalal.com/RecipeAtoZ.aspx").get();
+		List<RecipeData> dataList =  new ArrayList<>();
+		//String[] alphabets = {"A","B","C"};
 		
+		String[] alphabets = {"A"};
+		
+		for(String a : alphabets) {
+		
+			String azurl = baseUrl + "?beginswith=" + a;
+	
+			extractByAZ(azurl,dataList);
+	
+		}
+		return dataList;
+	}
+
+	private void extractByAZ(String azurl,List<RecipeData> dataList) {
+		
+		System.out.println("extractByAZ Connecting: " + azurl);
+		
+		try {
+			Document recipeDoc = Jsoup.connect(azurl).get();
+			
+			System.out.println("extractByAZ Connected: " + azurl);
+			
+			//int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
+			
+			int pageCount = 2;
+			
+			for (int i=1;i<=pageCount;i++) {
+				
+				String pageurl = azurl + "&pageindex=" + i;
+				extractionByPageIndex(dataList, pageurl);
+			
+			}		
+			
+		}catch(IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	private void extractionByPageIndex(List<RecipeData> dataList, String pageurl) throws IOException {
+		
+		System.out.println(" extractionByPageIndex Connecting: " + pageurl);
+		Document recipeDoc = Jsoup.connect(pageurl).get();
+		System.out.println("extractionByPageIndex Connected: " + pageurl);
 		List<Element> elements = recipeDoc.select("div[class=rcc_recipecard]");
 		
 		//System.out.println("Element" + elements);
-		List<RecipeData> dataList =  new ArrayList<>();
+		
 		
 		for (Element e : elements) {
 			
@@ -36,8 +79,10 @@ public class ScraperJsoup {
 		for (RecipeData rd : dataList) {
 			
 			List<String> ings =  new ArrayList<>();
+			System.out.println(" recipeUrl Connecting: " + "https://www.tarladalal.com/"+ rd.getRecipeUrl());
 			
 			Document ingredientsDoc = Jsoup.connect("https://www.tarladalal.com/"+ rd.getRecipeUrl()).get();
+			System.out.println(" recipeUrl Connected: ");
 			
 			for(Element e : ingredientsDoc.select("span[itemprop=recipeIngredient]")) {
 				
@@ -51,16 +96,5 @@ public class ScraperJsoup {
 			
 			rd.setIngredients(ings);
 		}
-		
-		
-		return dataList;
-		
-	}catch(IOException e) {
-		
-		e.printStackTrace();
 	}
-	return null;
-	}
-	
-	
 }
