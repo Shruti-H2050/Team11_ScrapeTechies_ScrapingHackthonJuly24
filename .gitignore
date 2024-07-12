@@ -1,0 +1,9 @@
+<<<<<<< HEAD:Team11_ScrapeTechies_ScrappingHackathon/.gitignore
+/target/
+/test-output/
+/test-output-thread/
+
+
+=======
+/target/
+>>>>>>> 7d38317adf797803fd6929c3ec8164a5ad82a8c8:.gitignore
