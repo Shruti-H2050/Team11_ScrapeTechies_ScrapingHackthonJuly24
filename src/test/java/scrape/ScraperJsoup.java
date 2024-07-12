@@ -11,7 +11,7 @@ import org.jsoup.nodes.Element;
 
 import pojo.RecipeData;
 
-public class Scrapejsoup {
+public class ScraperJsoup {
 	
 
 	public List<RecipeData> extractRecipeData(String baseUrl) {
