@@ -9,8 +9,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
+import pojo.RecipeData;
+
 public class PaginationTest {
-	WebDriver driver;
+	private WebDriver driver;
 
 	@Test
 	public void getPage() throws InterruptedException {
@@ -20,21 +22,25 @@ public class PaginationTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		WebElement recipeAtoZ = driver.findElement(By.xpath("//div[@id='toplinks']/a[5]"));
 		recipeAtoZ.click();
-		for (int i = 1; i <= 27; i++) {
+		//List<WebElement> pages=driver.findElements(By.id(""));
+		//int pageCount=pages.size();
+		//System.out.println(pageCount);
+		
+		for (int i = 3; i <= 53; i++) {
 			WebElement num = driver.findElement(By.xpath("//div[@id='cardholder']/table/tbody/tr/td[" + i + "]"));
 			num.click();
 
-			/*WebElement div = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]"));
+			WebElement div = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]"));
 			
 			List<WebElement> links = div.findElements(By.tagName("a"));
-			System.out.println("links size = " + links.size());
+			//System.out.println("links size = " + links.size());
 			
 			int lastElement = Integer.parseInt(links.get(links.size() - 1).getText());
-			System.out.println("lastElement = " + lastElement);
+			//System.out.println("lastElement = " + lastElement);
 			for (int x = 1; x <= lastElement; x++) {
-				WebElement element = div.findElement(By.linkText(String.valueOf(x)));
-				element.click();
-			}*/
+				WebElement activeElement = div.findElement(By.linkText(String.valueOf(x)));
+				activeElement.click();
+			}
 			
 
 		}
