@@ -7,6 +7,7 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import pojo.RecipeData;
 
@@ -147,7 +148,28 @@ public class ScraperJsoup {
 		    {
 				rd.setFoodCategory("NA");
 			}
-		    	
+			
+			Element rcpnutsDiv = ingredientsDoc.selectFirst("#rcpnuts");
+			 List<String> nutrientValues = new ArrayList<>();
+            if (rcpnutsDiv != null) {
+                
+                Elements nutrientTableRows = rcpnutsDiv.select("table tr");
+               
+                for (Element row : nutrientTableRows) {
+                    Elements cells = row.select("td");
+                    for (Element cell : cells) {
+                        String nutrientValue = cell.text();
+                        nutrientValues.add(nutrientValue);
+                    }
+                }
+            
+            rd.setNutrientValues(nutrientValues);
+            }	
+            else 
+            	{
+            		nutrientValues.add("Not Given");
+            		rd.setNutrientValues(nutrientValues);
+            	}
 			
 		
 		}

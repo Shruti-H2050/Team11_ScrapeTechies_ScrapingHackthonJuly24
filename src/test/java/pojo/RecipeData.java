@@ -19,7 +19,7 @@ public class RecipeData {
     private String cuisineCategory;
     private String recipeDescription;
     private List<String> preparationMethod;
-    private String nutrientValues;	
+    private List<String> nutrientValues;	
 	private String recipeUrl;
 	    
     public String getRecipeId() {
@@ -66,7 +66,7 @@ public class RecipeData {
         return prepTime;
     }
 
-    public void setPrepTime(String preparationTime) {
+    public void setPrepTime(String prepTime) {
         this.prepTime = prepTime;
     }
 
@@ -74,7 +74,7 @@ public class RecipeData {
         return cookTime;
     }
 
-    public void setCookTime(String cookingTime) {
+    public void setCookTime(String cookTime) {
         this.cookTime = cookTime;
     }
 
@@ -118,12 +118,12 @@ public class RecipeData {
         this.preparationMethod = methodlist;
     }
 
-    public String getNutrientValues() {
+    public List<String> getNutrientValues() {
         return nutrientValues;
     }
 
-    public void setNutrientValues(String nutrientValues) {
-        this.nutrientValues = nutrientValues;
+    public void setNutrientValues(List<String> nutrientValues2) {
+        this.nutrientValues = nutrientValues2;
     }
 
     public String getRecipeUrl() {
@@ -141,6 +141,7 @@ public class RecipeData {
 				+ cuisineCategory + ", recipeDescription=" + recipeDescription + ", preparationMethod="
 				+ preparationMethod + ", nutrientValues=" + nutrientValues + ", recipeUrl=" + recipeUrl + "]";
 	}
-	
+
+	 
 	
 }

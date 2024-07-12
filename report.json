@@ -10,6 +10,8 @@
       "roses",
       "asparagus"
     ],
+    "prepTime": "30 mins",
+    "cookTime": "0 mins",
     "tag": [
       "No Cooking Veg Indian",
       "Valentines Day Indian recipes"
@@ -23,6 +25,9 @@
       "To finish off, use the asparagus ferns to cover up any spaces where the foam is still visible.",
       "If you find asparagus difficult to find, use small drumsticks instead."
     ],
+    "nutrientValues": [
+      "Not Given"
+    ],
     "recipeUrl": "a-checkerboard-of-roses--flower-arrangements-37154r"
   },
   {
@@ -31,6 +36,8 @@
     "recipeCategory": "NA",
     "foodCategory": "NA",
     "ingredients": [],
+    "prepTime": "30 mins",
+    "cookTime": "0 mins",
     "tag": [
       "High Tea Party",
       "Western Party"
@@ -51,6 +58,9 @@
       "Fill the gaps with the small chocolate fillers.",
       "Your delicious chocolate bouquet is ready!"
     ],
+    "nutrientValues": [
+      "Not Given"
+    ],
     "recipeUrl": "a-truly-delectable-bunch--flower-arrangements-37261r"
   },
   {
@@ -62,6 +72,8 @@
       "asparagus",
       "lavash"
     ],
+    "prepTime": "30 mins",
+    "cookTime": "0 mins",
     "tag": [
       "Western Party",
       "Cocktail Party"
@@ -74,6 +86,9 @@
       "Cut the lavash bread into triangles of various sizes. Use raffia to tie the triangles around a round candle. Decorate 2 candles in this manner. Place the candles on oppsite corners of the mat near the bread.",
       "Your eye-catching centerpiece is ready.",
       "Raffia is a soft natural fibre sued for weaving, winding and making baskets, mats and many other items."
+    ],
+    "nutrientValues": [
+      "Not Given"
     ],
     "recipeUrl": "a-bun-dantly-creative--flower-arrangements-37167r"
   },
@@ -96,6 +111,8 @@
       "chilli powder",
       "mustard (rai / sarson) oil"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "4 mins",
     "tag": [
       "Rajasthani Achaar Launji",
       "Pickles / Achar",
@@ -113,6 +130,22 @@
       "Remove from the flame and allow it to cool.",
       "Once cooled, add the oil to the prepared mixture and mix well.",
       "Bottle the pickle in a sterilized glass jar and keep aside for 6 to 7 days. After 7 days, it is ready to eat."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "95 cal",
+      "Protein",
+      "0.5 g",
+      "Carbohydrates",
+      "3 g",
+      "Fiber",
+      "1 g",
+      "Fat",
+      "9.1 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "0.8 mg"
     ],
     "recipeUrl": "aam-chana-achar-rajasthani-pickle-3904r"
   },
@@ -133,6 +166,8 @@
       "mustard (rai / sarson) oil",
       "salt"
     ],
+    "prepTime": "15 mins",
+    "cookTime": "10 mins",
     "tag": [
       "Punjabi Raita | Punjabi Chutney | Achar",
       "Pickles / Achar",
@@ -146,6 +181,22 @@
       "Combine the rest of the ingredients in a bowl and mix well.",
       "Add the mangoes and toss well.",
       "Bottle the pickle in a sterilised glass jar. Place the pickle under the sun for 4 to 5 days. This aam ka achaar can be stored for upto 1 year."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "507 cal",
+      "Protein",
+      "1.9 g",
+      "Carbohydrates",
+      "62 g",
+      "Fiber",
+      "6.6 g",
+      "Fat",
+      "31.1 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "6208.7 mg"
     ],
     "recipeUrl": "aam-ka-achaar-mango-pickle-punjabi-achar-30931r"
   },
@@ -165,6 +216,8 @@
       "asafoetida (hing)",
       "salt"
     ],
+    "prepTime": "15 mins",
+    "cookTime": "20 mins",
     "tag": [
       "Course",
       "Indian Snacks using Fruits",
@@ -178,6 +231,46 @@
     "preparationMethod": [
       "Heat the oil in a deep non-stick pan, dip the mango cubes individually into the batter and deep-fry till they turn golden brown and crisp from all the sides. Drain on an absorbent paper.",
       "Serve immediately."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "237 cal",
+      "Protein",
+      "5.8 g",
+      "Carbohydrates",
+      "27.3 g",
+      "Fiber",
+      "4.2 g",
+      "Fat",
+      "11.6 g",
+      "Cholesterol",
+      "0 mg",
+      "Vitamin A",
+      "1273.8 mcg",
+      "Vitamin B1",
+      "0.2 mg",
+      "Vitamin B2",
+      "0.1 mg",
+      "Vitamin B3",
+      "1.1 mg",
+      "Vitamin C",
+      "7 mg",
+      "Folic Acid",
+      "36.6 mcg",
+      "Calcium",
+      "20.3 mg",
+      "Iron",
+      "1.9 mg",
+      "Magnesium",
+      "0 mg",
+      "Phosphorus",
+      "0 mg",
+      "Sodium",
+      "28.9 mg",
+      "Potassium",
+      "268.4 mg",
+      "Zinc",
+      "0.6 mg"
     ],
     "recipeUrl": "aam-ke-pakode-mango-bhajiya-36291r"
   },
@@ -195,6 +288,8 @@
       "poppy seeds (khus-khus)",
       "salt"
     ],
+    "prepTime": "15 mins.",
+    "cookTime": "45 mins.",
     "tag": [
       "Pickles / Achar",
       "Sugar Based Pickles"
@@ -205,6 +300,22 @@
       "Add the mango pieces and grated mangoes and cook over a slow flame (approximately 25 to 30 minutes), stirring occasionally till the sugar syrup is of one string consistency and the mango pieces are soft and translucent.",
       "Add the sambhaar, almonds, poppy seeds and salt and mix well.",
       "Allow to cool completely. Bottle in a sterilised glass jar. This can be stored for upto 1 year refrigerated."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "69 cal",
+      "Protein",
+      "0.3 g",
+      "Carbohydrates",
+      "15.2 g",
+      "Fiber",
+      "0.1 g",
+      "Fat",
+      "0.8 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "85.7 mg"
     ],
     "recipeUrl": "aam-ki-katki-ka-muraba-3427r"
   },
@@ -224,6 +335,8 @@
       "sugar",
       "salt"
     ],
+    "prepTime": "5 mins",
+    "cookTime": "6 mins",
     "tag": [
       "Rajasthani Achaar Launji",
       "Pickles / Achar",
@@ -237,6 +350,22 @@
       "Add ¼ cup of water, coriander powder, chilli powder, turmeric powder, sugar and salt,mix well and cook on a medium flame for 2 to 3 minutes, while stirring occasionally.",
       "Allow the launji to cool completely.",
       "Once cooled, serve or store in an air-tight container and refrigerate."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "56 cal",
+      "Protein",
+      "0.1 g",
+      "Carbohydrates",
+      "7.5 g",
+      "Fiber",
+      "0.3 g",
+      "Fat",
+      "3.1 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "0.3 mg"
     ],
     "recipeUrl": "aam-ki-launji-3901r"
   },
@@ -253,6 +382,8 @@
       "ice-cubes",
       "mint leaves (phudina)"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "0 mins",
     "tag": [
       "Punjabi Drinks",
       "Indian Drinks / Sharbats",
@@ -270,6 +401,22 @@
       "Remove it from the freezer and keep aside for 4 to 5 minutes.",
       "Scrape it with a fork and serve immediately in small glasses garnished with mint leaves."
     ],
+    "nutrientValues": [
+      "Energy",
+      "149 cal",
+      "Protein",
+      "2.4 g",
+      "Carbohydrates",
+      "24.4 g",
+      "Fiber",
+      "0.3 g",
+      "Fat",
+      "3.4 g",
+      "Cholesterol",
+      "8 mg",
+      "Sodium",
+      "18.6 mg"
+    ],
     "recipeUrl": "aam-lassi-slush-2848r"
   },
   {
@@ -286,6 +433,8 @@
       "water",
       "ice cubes"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "0 mins",
     "tag": [
       "Low Cal Beverages",
       "No Cooking Veg Indian",
@@ -304,6 +453,22 @@
       "Add some crushed ice in 2 individual glasses and pour equal quantities of the juice over it.",
       "Serve apple, beetroot and carrot juice immediately.",
       "This recipe makes use of unpeeled fruits and vegetables, hence take care to clean and wash them well before chopping, to get rid of dirt, germs and chemical residues."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "34 cal",
+      "Protein",
+      "0.8 g",
+      "Carbohydrates",
+      "7.3 g",
+      "Fiber",
+      "2.6 g",
+      "Fat",
+      "0.2 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "30.7 mg"
     ],
     "recipeUrl": "abc-juice-apple-beet-carrot-juice-6201r"
   },
@@ -340,6 +505,8 @@
       "chaat masala",
       "rotis"
     ],
+    "prepTime": "20 mins",
+    "cookTime": "20 mins",
     "tag": [
       "Indian Rolls, Veg Roll",
       "Saute",
@@ -364,6 +531,9 @@
       "Repeat with the remaining ingredients to make 3 more rolls.",
       "Wrap a tissue paper around each roll and serve immediately."
     ],
+    "nutrientValues": [
+      "Not Given"
+    ],
     "recipeUrl": "achaari-aloo-roll--wraps-and-rolls-32665r"
   },
   {
@@ -387,6 +557,8 @@
       "oil",
       "dahiwali pudina chutney"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "10 mins",
     "tag": [
       "Punjabi",
       "Punjabi Swadisht Nashta",
@@ -405,6 +577,22 @@
       "Heat a non-stick tava (griddle), grease it with little oil, place a few satays on it and cook on a medium flame, using a little oil, till they turn golden brown in colour from all the sides.",
       "Repeat step 3 to cook more satays.",
       "Serve the achaari paneer tikka immediately with dahiwali phudina chutney."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "274 cal",
+      "Protein",
+      "9.5 g",
+      "Carbohydrates",
+      "7 g",
+      "Fiber",
+      "0 g",
+      "Fat",
+      "21.9 g",
+      "Cholesterol",
+      "8 mg",
+      "Sodium",
+      "9.6 mg"
     ],
     "recipeUrl": "achaari-paneer-tikka-32939r"
   },
@@ -433,6 +621,8 @@
       "chilli powder",
       "oil"
     ],
+    "prepTime": "20 mins",
+    "cookTime": "20 mins",
     "tag": [
       "Indian Snacks for Entertaining",
       "Paneer Based Snacks",
@@ -450,6 +640,9 @@
       "Bake in a pre-heated oven at 180°c (360°f) till they turn crisp.",
       "Cut into 2½“squares and keep aside.",
       "Place a spoonful of the achari paneer mixture on a sheet of samosa pattis warqi and serve immediately."
+    ],
+    "nutrientValues": [
+      "Not Given"
     ],
     "recipeUrl": "achaari-paneer-warqi-36293r"
   },
@@ -473,6 +666,8 @@
       "powdered sugar",
       "khakhras"
     ],
+    "prepTime": "2 mins",
+    "cookTime": "1 mins",
     "tag": [
       "Jain International",
       "Indian Dips / Sauces",
@@ -489,6 +684,22 @@
       "To make achari dip, combine the achaari mixture, curds and salt in a deep bowl and mix well using a whisk.",
       "Refrigerate for at least 1 hour.",
       "Serve the achari dip chilled with khakhras."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "28 cal",
+      "Protein",
+      "0.9 g",
+      "Carbohydrates",
+      "1.5 g",
+      "Fiber",
+      "0 g",
+      "Fat",
+      "1.5 g",
+      "Cholesterol",
+      "3.4 mg",
+      "Sodium",
+      "4.3 mg"
     ],
     "recipeUrl": "achar-dip-achari-dip-22718r"
   },
@@ -524,6 +735,8 @@
       "cream",
       "chopped coriander (dhania)"
     ],
+    "prepTime": "15 mins",
+    "cookTime": "15 mins",
     "tag": [
       "Punjabi Sabzis",
       "Traditional Indian Sabzis",
@@ -542,6 +755,22 @@
       "Add the turmeric powder, chilli powder, punjabi garam masala, dry mango powder and salt and sauté on a medium flame for 2 minutes.",
       "Add the curds, fried brinjals and fresh cream, mix gently and cook on a slow flame for 2 to 3 minutes, while stirring continuously.",
       "Serve hot garnished with coriander."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "215 cal",
+      "Protein",
+      "3.1 g",
+      "Carbohydrates",
+      "6 g",
+      "Fiber",
+      "4 g",
+      "Fat",
+      "19.2 g",
+      "Cholesterol",
+      "6 mg",
+      "Sodium",
+      "18 mg"
     ],
     "recipeUrl": "achari-baingan-30888r"
   },
@@ -570,6 +799,8 @@
       "salt",
       "chopped coriander (dhania)"
     ],
+    "prepTime": "15 mins",
+    "cookTime": "15 mins",
     "tag": [
       "Course",
       "Punjabi Pulao | Punjabi Rice, Biryani",
@@ -589,6 +820,22 @@
       "Add the 2½ cups hot water, mix well and pressure cook for 2 whistles.",
       "Allow the steam to escape before opening the lid.",
       "Serve achari chana pulao hot garnished with coriander."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "475 cal",
+      "Protein",
+      "6.1 g",
+      "Carbohydrates",
+      "66.9 g",
+      "Fiber",
+      "5.9 g",
+      "Fat",
+      "20.2 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "7784.3 mg"
     ],
     "recipeUrl": "achari-chana-pulao-pickled-kabuli-chana-pulao-30922r"
   },
@@ -615,6 +862,8 @@
       "salt",
       "rotis parathas"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "13 mins",
     "tag": [
       "Punjabi Sabzis",
       "Indian Tiffin Box, Lunch box, Dabba",
@@ -631,6 +880,22 @@
       "Lower the flame, add the curd mixture, mix well and cook for 1 minute, while stirring continuously.",
       "Add the shallow-fried ladies finger and salt, mix well and cook on a medium flame for 1 to 2 minutes, while stirring occasionally.",
       "Serve the achari dahi bhindi hot with rotis or parathas."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "328 cal",
+      "Protein",
+      "4.8 g",
+      "Carbohydrates",
+      "13.3 g",
+      "Fiber",
+      "6.4 g",
+      "Fat",
+      "27.6 g",
+      "Cholesterol",
+      "5.3 mg",
+      "Sodium",
+      "22.4 mg"
     ],
     "recipeUrl": "achari-dahi-bhindi-punjabi--sabji-22779r"
   },
@@ -657,6 +922,8 @@
       "chopped coriander (dhania)",
       "salt"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "6 mins",
     "tag": [
       "Punjabi Sabzis",
       "Punjabi Paneer Recipes",
@@ -674,6 +941,22 @@
       "Add the curds, plain flour, mix well and cook on a medium flame for 1 to 2 minutes, while stirring occasionally.",
       "Switch off the flame, add the coriander and salt and mix well.",
       "Serve the achari paneer hot with rice or rotis."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "381 cal",
+      "Protein",
+      "13.4 g",
+      "Carbohydrates",
+      "12.8 g",
+      "Fiber",
+      "0.2 g",
+      "Fat",
+      "29 g",
+      "Cholesterol",
+      "12 mg",
+      "Sodium",
+      "16.8 mg"
     ],
     "recipeUrl": "achari-paneer-1736r"
   },
@@ -704,6 +987,8 @@
       "salt",
       "chopped coriander (dhania)"
     ],
+    "prepTime": "15 mins",
+    "cookTime": "5 mins",
     "tag": [
       "Jain Rice",
       "Mughlai Chawal, Mughlai Biryani",
@@ -724,6 +1009,22 @@
       "When the caraway seeds crackle, add the rice and salt, mix well and cook on medium flame for 1 minute, while stirring continuously.",
       "Add the marinated paneer, mix well and cook on a medium flame for 1 to 2 minutes, while stirring occasionally.",
       "Serve the achari paneer pulao hot garnished with coriander."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "377 cal",
+      "Protein",
+      "10.1 g",
+      "Carbohydrates",
+      "38.5 g",
+      "Fiber",
+      "0.1 g",
+      "Fat",
+      "19.7 g",
+      "Cholesterol",
+      "4 mg",
+      "Sodium",
+      "7.8 mg"
     ],
     "recipeUrl": "achari-paneer-pulao-paneer-tikka-rice-7555r"
   },
@@ -747,6 +1048,8 @@
       "paneer (cottage cheese) cubes",
       "oil"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "10 mins",
     "tag": [
       "Course",
       "Punjabi Paneer Recipes",
@@ -765,6 +1068,22 @@
       "Heat a non-stick tava (griddle), grease it with little oil, place a few satays on it and cook on a medium flame, using a little oil, till they turn golden brown in colour from all the sides.",
       "Repeat step 3 to cook more satays.",
       "Serve the achari paneer tikka immediately."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "295 cal",
+      "Protein",
+      "9.4 g",
+      "Carbohydrates",
+      "6.8 g",
+      "Fiber",
+      "0 g",
+      "Fat",
+      "24.4 g",
+      "Cholesterol",
+      "8 mg",
+      "Sodium",
+      "9.5 mg"
     ],
     "recipeUrl": "achari-paneer-tikka-4772r"
   },
@@ -788,6 +1107,8 @@
       "salt",
       "oil"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "40 mins",
     "tag": [
       "South Indian Evening Snacks",
       "Different Types of Dosa",
@@ -808,6 +1129,22 @@
       "Fold over to make a semi-circle.",
       "Repeat steps 4 to 7 to make 23 more adais. .",
       "Serve immediately."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "53 cal",
+      "Protein",
+      "2.2 g",
+      "Carbohydrates",
+      "8.3 g",
+      "Fiber",
+      "0.8 g",
+      "Fat",
+      "1.2 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "2.3 mg"
     ],
     "recipeUrl": "adai--diabetic-adai-recipe-22270r"
   },
@@ -833,6 +1170,8 @@
       "coconut oil oil",
       "coconut chutney"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "30 mins",
     "tag": [
       "South Indian",
       "Different Types of Dosa",
@@ -854,6 +1193,22 @@
       "Fold over to make a semi-circle.",
       "Repeat with the remaining batter to make 9 more adai dosas.",
       "Serve the adai dosa immediately with coconut chutney."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "114 cal",
+      "Protein",
+      "3.8 g",
+      "Carbohydrates",
+      "21.7 g",
+      "Fiber",
+      "1.8 g",
+      "Fat",
+      "1.4 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "6.9 mg"
     ],
     "recipeUrl": "adai-recipe-adai-dosa-breakfast-534r"
   },
@@ -878,6 +1233,8 @@
       "salt",
       "oil"
     ],
+    "prepTime": "15 mins",
+    "cookTime": "30 mins",
     "tag": [
       "Healthy Indian Recipes",
       "South Indian Evening Snacks",
@@ -900,6 +1257,22 @@
       "Repeat with the remaining batter to make 14 more adais.",
       "Serve immediately."
     ],
+    "nutrientValues": [
+      "Energy",
+      "73 cal",
+      "Protein",
+      "2.7 g",
+      "Carbohydrates",
+      "10.7 g",
+      "Fiber",
+      "1.7 g",
+      "Fat",
+      "2.2 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "6.5 mg"
+    ],
     "recipeUrl": "adai-protein-rich-adai-recipe-33240r"
   },
   {
@@ -914,6 +1287,8 @@
       "lemon",
       "salt"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "0 mins",
     "tag": [
       "Indian Drinks / Sharbats",
       "Indian Sorbets / Indian Frozen Desserts",
@@ -925,6 +1300,22 @@
       "Combine all the ingredients in a deep bowl and mix well.",
       "Pour the mixture into a shallow aluminium container and freeze for 5 hours.",
       "Blend in a mixer till slushy and serve immediately."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "115 cal",
+      "Protein",
+      "0.2 g",
+      "Carbohydrates",
+      "27.5 g",
+      "Fiber",
+      "0 g",
+      "Fat",
+      "0.4 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "258.4 mg"
     ],
     "recipeUrl": "adrak-aur-ganne-ka-slush-sugarcane-and-ginger-slush-2850r"
   },
@@ -940,6 +1331,8 @@
       "sugar",
       "cinnamon (dalchini) powder"
     ],
+    "prepTime": "2 mins",
+    "cookTime": "5 mins",
     "tag": [
       "Indian Mocktails",
       "Indian Coffee Recipes",
@@ -952,6 +1345,9 @@
       "Add the brandy and mix well.",
       "Place a scoop of ice-cream in each coffee mug and pour half the coffee mixture over each mug.",
       "Serve immediately garnished with the cinnamon powder."
+    ],
+    "nutrientValues": [
+      "Not Given"
     ],
     "recipeUrl": "affogato-4752r"
   },
@@ -974,6 +1370,8 @@
       "salt",
       "oil"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "20 mins",
     "tag": [
       "Mughlai Sabzis, Veg Mughlai sabzi, Curries",
       "Dinner",
@@ -991,6 +1389,22 @@
       "Repeat steps 3 and 4 to make 4 more satays.",
       "Serve immediately."
     ],
+    "nutrientValues": [
+      "Energy",
+      "219 cal",
+      "Protein",
+      "5.9 g",
+      "Carbohydrates",
+      "4 g",
+      "Fiber",
+      "0.1 g",
+      "Fat",
+      "19.9 g",
+      "Cholesterol",
+      "8.1 mg",
+      "Sodium",
+      "28.1 mg"
+    ],
     "recipeUrl": "afghani-paneer-30939r"
   },
   {
@@ -1005,6 +1419,8 @@
       "chilli powder",
       "salt"
     ],
+    "prepTime": "10 mins",
+    "cookTime": "10 mins",
     "tag": [
       "Indian Veg Recipes",
       "Indian Party",
@@ -1019,6 +1435,22 @@
       "Place the bhindi in an air fryer and cook at 200°c for 10 minutes, while stirring once after 5 minutes.",
       "Add the masala powder and mix well.",
       "Serve healthy air fryer crispy okra (ladies finger) immediately."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "43 cal",
+      "Protein",
+      "1.9 g",
+      "Carbohydrates",
+      "6.3 g",
+      "Fiber",
+      "3.6 g",
+      "Fat",
+      "1.2 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "394.4 mg"
     ],
     "recipeUrl": "air-fried-bhindi-healthy-air-fryer-crispy-okra-42874r"
   },
@@ -1035,6 +1467,8 @@
       "salt",
       "olive oil"
     ],
+    "prepTime": "5 mins",
+    "cookTime": "14 mins",
     "tag": [
       "Indian Veg Recipes",
       "American Breakfast",
@@ -1053,6 +1487,22 @@
       "Place the air fried shakarkand in a bowl. Add 1/2 tsp olive oil and toss.",
       "Add the masala powder and mix well.",
       "Serve air fried shakarkand immediately as it will remain crisp for a short while."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "159 cal",
+      "Protein",
+      "1.4 g",
+      "Carbohydrates",
+      "33.1 g",
+      "Fiber",
+      "4.6 g",
+      "Fat",
+      "2.4 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "204.4 mg"
     ],
     "recipeUrl": "air-fried-shakarkand-indian-style-sweet-potato-fries-42873r"
   }

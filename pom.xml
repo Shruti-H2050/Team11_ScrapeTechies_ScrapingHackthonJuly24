@@ -3,13 +3,7 @@
   <groupId>Team11_Scrape_Backup</groupId>
   <artifactId>Team11_Scrape_Backup</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <repositories>
-        <repository>
-            <id>remote-repo</id>
-            <name>Remote Repository</name>
-            <url>http://remote-repo-url</url>
-        </repository>
-    </repositories>
+  
      <dependencies>
 	  <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 <dependency>
