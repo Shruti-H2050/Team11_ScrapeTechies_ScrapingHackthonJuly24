@@ -14,7 +14,7 @@ public class RecipeData {
     private List<String> ingredients;
     private String prepTime;
 	private String cookTime;
-	private String tag;
+	private List<String> tag;
 	private String servings;
     private String cuisineCategory;
     private String recipeDescription;
@@ -63,10 +63,10 @@ public class RecipeData {
 	public void setCookTime(String cookTime) {
 		this.cookTime = cookTime;
 	}
-	public String getTag() {
+	public List<String> getTag() {
 		return tag;
 	}
-	public void setTag(String tag) {
+	public void setTag(List<String> tag) {
 		this.tag = tag;
 	}
 	public String getServings() {
@@ -107,7 +107,7 @@ public class RecipeData {
 	}
 	@Override
 	public String toString() {
-		return "/nRecipeData [recipeId=" + recipeId + ", recipeName=" + recipeName + ", recipeCategory=" + recipeCategory
+		return "\nRecipeData [recipeId=" + recipeId + ", recipeName=" + recipeName + ", recipeCategory=" + recipeCategory
 				+ ", foodCategory=" + foodCategory + ", ingredients=" + ingredients + ", prepTime=" + prepTime
 				+ ", cookTime=" + cookTime + ", tag=" + tag + ", servings=" + servings + ", cuisineCategory="
 				+ cuisineCategory + ", recipeDescription=" + recipeDescription + ", preparationMethod="

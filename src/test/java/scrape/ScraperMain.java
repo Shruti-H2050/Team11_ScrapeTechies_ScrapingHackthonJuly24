@@ -10,8 +10,11 @@ public class ScraperMain {
 		
 		String baseUrl = "https://www.tarladalal.com/RecipeAtoZ.aspx"; 
 		ScraperJsoup sj = new ScraperJsoup();
+		
+		//RecipeExtractor re = new ScraperJsoup();
 		List<RecipeData> recipeData = sj.extractRecipeData(baseUrl);
-		System.out.println("Data:\n" + recipeData);
+		
+		System.out.println("Data:" + recipeData);
 		System.out.println("RecipeSize: " + recipeData.size());
 	}
 }

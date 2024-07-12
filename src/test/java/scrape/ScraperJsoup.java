@@ -10,12 +10,12 @@ import org.jsoup.nodes.Element;
 
 import pojo.RecipeData;
 
-public class ScraperJsoup {
+public class ScraperJsoup{
 	
 	public List<RecipeData> extractRecipeData(String baseUrl) {
 	
 		List<RecipeData> dataList =  new ArrayList<>();
-		//String[] alphabets = {"A","B","C"};
+		//String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		
 		String[] alphabets = {"A"};
 		
@@ -93,8 +93,56 @@ public class ScraperJsoup {
 			rd.setPrepTime(ingredientsDoc.select("Time[itemprop=prepTime]").text());
 			rd.setCookTime(ingredientsDoc.select("Time[itemprop=cookTime]").text());
 			
-			
 			rd.setIngredients(ings);
+			
+			List<String> taglist = new ArrayList<>();
+			
+			for(Element tags: ingredientsDoc.select("div[id=recipe_tags] a"))
+			{
+				taglist.add(tags.text());
+			}
+			System.out.println("Taglist:"+taglist);
+			
+				rd.setTag(taglist);
+			
+			if(taglist.contains("BreakFast"))
+			{
+				rd.setRecipeCategory("BreakFast");
+			}
+			else if(taglist.contains("Lunch"))
+			{
+				rd.setRecipeCategory("Lunch");
+			}
+			else if(taglist.contains("Dinner"))
+			{
+				rd.setRecipeCategory("Dinner");
+			}
+		    else if(taglist.contains("Snack"))
+			{
+				rd.setRecipeCategory("Snack");
+			}
+		    else
+		    {
+				rd.setRecipeCategory("NA");
+			}
+			if(taglist.contains("Veg"))
+			{
+				rd.setFoodCategory("Veg");
+			}
+			else if(taglist.contains("Non Veg"))
+			{
+				rd.setFoodCategory("Non Veg");
+			}
+			else if(taglist.contains("Vegan"))
+			{
+				rd.setFoodCategory("Vegan");
+			}
+		  
+		    else
+		    {
+				rd.setFoodCategory("NA");
+			}
+		    	
 		}
 	}
 }
