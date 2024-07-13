@@ -105,46 +105,122 @@ public class Scrape_jsoup {
 			}
 			System.out.println("Taglist:"+taglist);
 			rd.setTag(taglist);
-			if(taglist.contains("BreakFast"))
-			{
-				rd.setRecipeCategory("BreakFast");
+			//Recipecategory
+			List<CharSequence> R_category ;
+			
+			
+			R_category = taglist.stream().collect(Collectors.toList());
+			Pattern p1 = Pattern.compile( 
+		             "Snacks" , Pattern.CASE_INSENSITIVE); 
+			Pattern p2 = Pattern.compile( 
+		            "BreakFast", Pattern.CASE_INSENSITIVE);
+			Pattern p3 = Pattern.compile( 
+		             "Lunch" , Pattern.CASE_INSENSITIVE); 
+			Pattern p4 = Pattern.compile( 
+		            "Dinner", Pattern.CASE_INSENSITIVE);
+			for(CharSequence e:R_category){
+			
+				Matcher matcher;
+				matcher=p1.matcher(e);
+			
+			    while(matcher.find())
+			     {
+			    	String S=p1.toString();
+			        rd.setRecipeCategory(S);
+			        }
+			    
+				matcher=p2.matcher(e);
+			
+			    while(matcher.find())
+			     {
+			    	String S=p2.toString();
+			        rd.setRecipeCategory(S);
+			        }
+			    
+				matcher=p3.matcher(e);
+			
+			    while(matcher.find())
+			     {
+			    	String S=p3.toString();
+			        rd.setRecipeCategory(S);
+			        }
+			    
+				matcher=p4.matcher(e);
+			
+			    while(matcher.find())
+			     {
+			    	String S=p4.toString();
+			        rd.setRecipeCategory(S);
+			        }
+			 
 			}
-			else if(taglist.contains("Lunch"))
-			{
-				rd.setRecipeCategory("Lunch");
+			//Food Category
+			
+            List<CharSequence> F_category ;
+			
+			
+			F_category = taglist.stream().collect(Collectors.toList());
+			Pattern p5 = Pattern.compile( 
+		             "Veg" , Pattern.CASE_INSENSITIVE); 
+			Pattern p6 = Pattern.compile( 
+		            "Non Veg", Pattern.CASE_INSENSITIVE);
+			Pattern p7 = Pattern.compile( 
+		             "Vegan" , Pattern.CASE_INSENSITIVE); 
+	
+			for(CharSequence e:F_category){
+			
+				Matcher matcher;
+				matcher=p5.matcher(e);
+			
+			    while(matcher.find())
+			     {
+			    	String S=p5.toString();
+			        rd.setFoodCategory(S);
+			        }
+			    
+				matcher=p6.matcher(e);
+			
+			    while(matcher.find())
+			     {
+			    	String S=p6.toString();
+			        rd.setFoodCategory(S);
+			        }
+			    matcher=p7.matcher(e);
+				
+			    while(matcher.find())
+			     {
+			    	String S=p7.toString();
+			        rd.setFoodCategory(S);
+			        }
+			 
 			}
-			else if(taglist.contains("Dinner"))
-			{
-				rd.setRecipeCategory("Dinner");
-			}
-		    else if(taglist.contains("Snack"))
-			{
-				rd.setRecipeCategory("Snack");
-			}
-		    else
-		    {
-				rd.setRecipeCategory("NA");
-			}
-			if(taglist.contains("Veg"))
-			{
-				rd.setFoodCategory("Veg");
-			}
-			else if(taglist.contains("Non Veg"))
-			{
-				rd.setFoodCategory("Non Veg");
-			}
-			else if(taglist.contains("Vegan"))
-			{
-				rd.setFoodCategory("Vegan");
-			}
-		  
-		    else
-		    {
-				rd.setFoodCategory("NA");
-			}
+			     
+			  
+			
+			
+			System.out.println("Food Category:"+rd.getFoodCategory());
+			System.out.println("Receipe Category:"+rd.getRecipeCategory());
 		    	
 			
+			
+			
+			
+			}
+		 
 		}
+			
+			
+			
+			
+			catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		
+				
 	}
+	 
+	
+
 
 }
