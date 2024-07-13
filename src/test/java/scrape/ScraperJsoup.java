@@ -50,9 +50,9 @@ public class ScraperJsoup{
 			
 		//int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
 			
-			//int pageCount = 3;
+			int pageCount = 2;
 			
-			for (int i=1;i<=3;i++) {
+			for (int i=1;i<=pageCount;i++) {
 				
 				String pageurl = azurl + "&pageindex=" + i;
 				extractionByPageIndex(dataList, pageurl);
@@ -60,7 +60,6 @@ public class ScraperJsoup{
 			}		
 			
 		}catch(IOException e) {
-			
 			e.printStackTrace();
 		}
 		
@@ -407,7 +406,12 @@ public class ScraperJsoup{
 		        }
 		 
 		}
+		if(rd.getRecipeCategory()==null)
+		{
+			rd.setRecipeCategory("NA");
+		}
 		
+	
 		//Extracting Food Category
 		
         List<CharSequence> F_category ;
@@ -449,13 +453,14 @@ public class ScraperJsoup{
 		    	String S=p7.toString();
 		        rd.setFoodCategory(S);
 		        }
-		 
+			}
+		
+		if(rd.getFoodCategory()==null)
+		{
+			rd.setFoodCategory("NA");
 		}
-
-	
 	}
 	
-
 private static boolean listContainsString (List<String> tagList, String valuetoCheck) {
 boolean valuecontains = false;
 for (String tag : tagList) {
