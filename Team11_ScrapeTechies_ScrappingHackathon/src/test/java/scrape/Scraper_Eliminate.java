@@ -111,6 +111,10 @@ public class Scraper_Eliminate {
 			        }
 			 
 			}
+			if(rd.getRecipeCategory()==null)
+			{
+				rd.setRecipeCategory("NA");
+			}
 			//Food Category
 			
             List<CharSequence> F_category ;
@@ -169,7 +173,10 @@ public class Scraper_Eliminate {
 			        }
 			 
 			}
-			     
+			if(rd.getFoodCategory()==null)
+			{
+				rd.setFoodCategory("NA");
+			}
 			  
 			
 			
