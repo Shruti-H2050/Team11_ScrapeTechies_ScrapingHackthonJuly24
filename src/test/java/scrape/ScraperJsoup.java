@@ -44,13 +44,13 @@ public class ScraperJsoup{
 		Runnable task = () -> {
 		
 		try {
-			Document recipeDoc = Jsoup.connect(azurl).get();
+			Document recipeDoc = Jsoup.connect(azurl).timeout(20000).get();
 			
 			System.out.println("extractByAZ Connected: " + azurl);
 			
-		//int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
+		int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
 			
-			int pageCount = 3;
+			//int pageCount = 10;
 			
 			for (int i=1;i<=pageCount;i++) {
 				
@@ -81,7 +81,7 @@ public class ScraperJsoup{
 	private void extractionByPageIndex(List<RecipeData> dataList, String pageurl) throws IOException {
 		
 		System.out.println(" extractionByPageIndex Connecting: " + pageurl);
-		Document recipeDoc = Jsoup.connect(pageurl).get();
+		Document recipeDoc = Jsoup.connect(pageurl).timeout(20000).get();
 		System.out.println("extractionByPageIndex Connected: " + pageurl);
 		List<Element> elements = recipeDoc.select("div[class=rcc_recipecard]");
 		
@@ -122,7 +122,7 @@ public class ScraperJsoup{
 	private void extractFields(RecipeData rd) throws IOException {
 		System.out.println(" recipeUrl Connecting: " + "https://www.tarladalal.com/"+ rd.getRecipeUrl());
 		
-		Document ingredientsDoc = Jsoup.connect("https://www.tarladalal.com/"+ rd.getRecipeUrl()).get();
+		Document ingredientsDoc = Jsoup.connect("https://www.tarladalal.com/"+ rd.getRecipeUrl()).timeout(20000).get();
 		System.out.println(" recipeUrl Connected: ");
 		
 		//Extracting Ingredients
