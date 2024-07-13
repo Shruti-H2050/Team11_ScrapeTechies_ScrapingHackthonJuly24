@@ -25,7 +25,7 @@ public class ScraperJsoup{
 		List<RecipeData> dataList =  new ArrayList<>();
 		//String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		
-		String[] alphabets = {"A"};
+		String[] alphabets = {"B"};
 		
 		for(String a : alphabets) {
 		
@@ -44,15 +44,15 @@ public class ScraperJsoup{
 		Runnable task = () -> {
 		
 		try {
-			Document recipeDoc = Jsoup.connect(azurl).get();
+			Document recipeDoc = Jsoup.connect(azurl).timeout(20000).get();
 			
 			System.out.println("extractByAZ Connected: " + azurl);
 			
 		//int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
 			
-			int pageCount = 3;
+			//int pageCount = 3;
 			
-			for (int i=1;i<=pageCount;i++) {
+			for (int i=1;i<=3;i++) {
 				
 				String pageurl = azurl + "&pageindex=" + i;
 				extractionByPageIndex(dataList, pageurl);
@@ -65,13 +65,11 @@ public class ScraperJsoup{
 		}
 		
 		};
-		//exec.submit(task);
 		Thread t = new Thread(task);
 		t.start();
 		try {
 			t.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -81,7 +79,7 @@ public class ScraperJsoup{
 	private void extractionByPageIndex(List<RecipeData> dataList, String pageurl) throws IOException {
 		
 		System.out.println(" extractionByPageIndex Connecting: " + pageurl);
-		Document recipeDoc = Jsoup.connect(pageurl).get();
+		Document recipeDoc = Jsoup.connect(pageurl).timeout(20000).get();
 		System.out.println("extractionByPageIndex Connected: " + pageurl);
 		List<Element> elements = recipeDoc.select("div[class=rcc_recipecard]");
 		
@@ -122,7 +120,7 @@ public class ScraperJsoup{
 	private void extractFields(RecipeData rd) throws IOException {
 		System.out.println(" recipeUrl Connecting: " + "https://www.tarladalal.com/"+ rd.getRecipeUrl());
 		
-		Document ingredientsDoc = Jsoup.connect("https://www.tarladalal.com/"+ rd.getRecipeUrl()).get();
+		Document ingredientsDoc = Jsoup.connect("https://www.tarladalal.com/"+ rd.getRecipeUrl()).timeout(20000).get();
 		System.out.println(" recipeUrl Connected: ");
 		
 		//Extracting Ingredients
@@ -199,81 +197,167 @@ public class ScraperJsoup{
 		
 		//Extracting Cuisine Category
 		
-		if(listContainsString(taglist,"Rajasthani"))
-		{
-			rd.setCuisineCategory("Rajasthani");
-		}
-		else if(listContainsString(taglist,"Punjabi"))
-		{
-			rd.setCuisineCategory("Punjabi");
-		}
-		else if(listContainsString(taglist,"Bengali"))
-		{
-			rd.setCuisineCategory("Bengali");
-		}
-		else if(listContainsString(taglist,"orissa"))
-		{
-			rd.setCuisineCategory("orissa");
-		}
-		else if(listContainsString(taglist,"Gujarati"))
-		{
-			rd.setCuisineCategory("Gujarati");
-		}
-		else if(listContainsString(taglist,"Maharashtrian"))
-		{
-			rd.setCuisineCategory("Maharashtrian");
-		}
-		else if(listContainsString(taglist,"Andhra"))
-		{
-			rd.setCuisineCategory("Andhra");
-		}
-		else if(listContainsString(taglist,"Kerala"))
-		{
-			rd.setCuisineCategory("Kerala");
-		}
-		else if(listContainsString(taglist,"Jain"))
-		{
-			rd.setCuisineCategory("Jain");
-		}
-		else if(listContainsString(taglist,"Tamilnadu"))
-		{
-			rd.setCuisineCategory("Tamilnadu");
-		}
-		else if(listContainsString(taglist,"Karnataka"))
-		{
-			rd.setCuisineCategory("Karnataka");
-		}
-		else if(listContainsString(taglist,"Sindhi"))
-		{
-			rd.setCuisineCategory("Sindhi");
-		}
-		else if(listContainsString(taglist,"Chinese"))
-		{
-			rd.setCuisineCategory("Chinese");
-		}
-		else if(listContainsString(taglist,"Italian"))
-		{
-			rd.setCuisineCategory("Italian");
-		}
-		else if(listContainsString(taglist,"South Indian"))
-		{
-			rd.setCuisineCategory("Indian");
-		}
-		else if(listContainsString(taglist,"Indian"))
-		{
-			rd.setCuisineCategory("Indian");
-		}	
-	    else
-	    {
-	    	rd.setCuisineCategory("NA");
-			rd.setFoodCategory("NA");
-		}
-	    	
-		
-	
-
-		
-		//Extracting Recipe Category
+		 if(listContainsString(taglist,"Rajasthani"))
+			{
+				rd.setCuisineCategory("Rajasthani");
+			}
+			else if(listContainsString(taglist,"Punjabi"))
+			{
+				rd.setCuisineCategory("Punjabi");
+			}
+			else if(listContainsString(taglist,"Bengali"))
+			{
+				rd.setCuisineCategory("Bengali");
+			}
+			else if(listContainsString(taglist,"orissa"))
+			{
+				rd.setCuisineCategory("orissa");
+			}
+			else if(listContainsString(taglist,"Gujarati"))
+			{
+				rd.setCuisineCategory("Gujarati");
+			}
+			else if(listContainsString(taglist,"Maharashtrian"))
+			{
+				rd.setCuisineCategory("Maharashtrian");
+			}
+			else if(listContainsString(taglist,"Andhra"))
+			{
+				rd.setCuisineCategory("Andhra");
+			}
+			else if(listContainsString(taglist,"Kerala"))
+			{
+				rd.setCuisineCategory("Kerala");
+			}
+			else if(listContainsString(taglist,"Jain"))
+			{
+				rd.setCuisineCategory("Jain");
+			}
+			else if(listContainsString(taglist,"Tamilnadu"))
+			{
+				rd.setCuisineCategory("Tamilnadu");
+			}
+			else if(listContainsString(taglist,"Karnataka"))
+			{
+				rd.setCuisineCategory("Karnataka");
+			}
+			else if(listContainsString(taglist,"Sindhi"))
+			{
+				rd.setCuisineCategory("Sindhi");
+			}
+			else if(listContainsString(taglist,"Chhattisgarhi"))
+			{
+				rd.setCuisineCategory("Chhattisgarhi");
+			}
+			else if(listContainsString(taglist,"Madhya pradesh"))
+			{
+				rd.setCuisineCategory("Madhya pradesh");
+			}
+			else if(listContainsString(taglist,"Assamese"))
+			{
+				rd.setCuisineCategory("Assamese");
+			}
+			else if(listContainsString(taglist,"Manipuri"))
+			{
+				rd.setCuisineCategory("Manipuri");
+			}
+			else if(listContainsString(taglist,"Tripuri"))
+			{
+				rd.setCuisineCategory("Tripuri");
+			}
+			else if(listContainsString(taglist,"Sikkimese"))
+			{
+				rd.setCuisineCategory("Sikkimese");
+			}
+			else if(listContainsString(taglist,"Mizo"))
+			{
+				rd.setCuisineCategory("Mizo");
+			}
+			else if(listContainsString(taglist,"Arunachali"))
+			{
+				rd.setCuisineCategory("Arunachali");
+			}
+			else if(listContainsString(taglist,"uttarakhand"))
+			{
+				rd.setCuisineCategory("uttarakhand");
+			}
+			else if(listContainsString(taglist,"Haryanvi"))
+			{
+				rd.setCuisineCategory("Haryanvi");
+			}
+			else if(listContainsString(taglist,"Goan"))
+			{
+				rd.setCuisineCategory("Goan");
+			}
+			else if(listContainsString(taglist,"Kashmiri"))
+			{
+				rd.setCuisineCategory("Kashmiri");
+			}
+			else if(listContainsString(taglist,"Awadhi"))
+			{
+				rd.setCuisineCategory("Awadhi");
+			}
+			else if(listContainsString(taglist,"Bihar"))
+			{
+				rd.setCuisineCategory("Bihar");
+			}
+			else if(listContainsString(taglist,"Uttar pradesh"))
+			{
+				rd.setCuisineCategory("Uttar pradesh");
+			}
+			else if(listContainsString(taglist,"Delhi"))
+			{
+				rd.setCuisineCategory("Delhi");
+			}
+			else if(listContainsString(taglist,"South Indian"))
+			{
+				rd.setCuisineCategory("South Indian");
+			}
+			else if(listContainsString(taglist,"North Indian"))
+			{
+				rd.setCuisineCategory("North Indian");
+			}
+			else if(listContainsString(taglist,"Indian"))
+			{
+				rd.setCuisineCategory("Indian");
+			}	
+			else if(listContainsString(taglist,"Chinese"))
+			{
+				rd.setCuisineCategory("Chinese");
+			}	
+			else if(listContainsString(taglist,"American"))
+			{
+				rd.setCuisineCategory("American");
+			}	
+			else if(listContainsString(taglist,"French"))
+			{
+				rd.setCuisineCategory("French");
+			}	
+			else if(listContainsString(taglist,"Italian"))
+			{
+				rd.setCuisineCategory("Italian");
+			}
+			else if(listContainsString(taglist,"Lebanese"))
+			{
+				rd.setCuisineCategory("Lebanese");
+			}
+			else if(listContainsString(taglist,"Mexican"))
+			{
+				rd.setCuisineCategory("Mexican");
+			}
+			else if(listContainsString(taglist,"Thai"))
+			{
+				rd.setCuisineCategory("Thai");
+			}
+		 	
+			//end of selection for cuisine category
+		    else
+		    {
+		    	rd.setCuisineCategory("NA");
+				
+			}
+		    	
+		 //Extracting Recipe Category
 		
 		List<CharSequence> R_category ;
 		
@@ -329,14 +413,17 @@ public class ScraperJsoup{
         List<CharSequence> F_category ;
 		
 		
-		F_category = taglist.stream().collect(Collectors.toList());
+        F_category = taglist.stream().collect(Collectors.toList());
 		Pattern p5 = Pattern.compile( 
 	             "Veg" , Pattern.CASE_INSENSITIVE); 
 		Pattern p6 = Pattern.compile( 
 	            "Non Veg", Pattern.CASE_INSENSITIVE);
 		Pattern p7 = Pattern.compile( 
 	             "Vegan" , Pattern.CASE_INSENSITIVE); 
-
+		Pattern p8 = Pattern.compile( 
+	            "Eggitarian", Pattern.CASE_INSENSITIVE);
+		Pattern p9 = Pattern.compile( 
+	             "Jain" , Pattern.CASE_INSENSITIVE);
 		for(CharSequence e:F_category){
 		
 			Matcher matcher;
