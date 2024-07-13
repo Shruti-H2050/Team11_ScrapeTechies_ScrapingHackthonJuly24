@@ -138,18 +138,71 @@ public class ScraperJsoup {
 			{
 				rd.setFoodCategory("Vegan");
 			}
-			else if(taglist.contains("Indian"))
+			
+            else if(listContainsString(taglist,"Rajasthani"))
 			{
-				rd.setCuisineCategory("Indian");
+				rd.setCuisineCategory("Rajasthani");
 			}
-			else if(taglist.contains("Chinese"))
+			else if(listContainsString(taglist,"Punjabi"))
+			{
+				rd.setCuisineCategory("Punjabi");
+			}
+			else if(listContainsString(taglist,"Bengali"))
+			{
+				rd.setCuisineCategory("Bengali");
+			}
+			else if(listContainsString(taglist,"orissa"))
+			{
+				rd.setCuisineCategory("orissa");
+			}
+			else if(listContainsString(taglist,"Gujarati"))
+			{
+				rd.setCuisineCategory("Gujarati");
+			}
+			else if(listContainsString(taglist,"Maharashtrian"))
+			{
+				rd.setCuisineCategory("Maharashtrian");
+			}
+			else if(listContainsString(taglist,"Andhra"))
+			{
+				rd.setCuisineCategory("Andhra");
+			}
+			else if(listContainsString(taglist,"Kerala"))
+			{
+				rd.setCuisineCategory("Kerala");
+			}
+			else if(listContainsString(taglist,"Jain"))
+			{
+				rd.setCuisineCategory("Jain");
+			}
+			else if(listContainsString(taglist,"Tamilnadu"))
+			{
+				rd.setCuisineCategory("Tamilnadu");
+			}
+			else if(listContainsString(taglist,"Karnataka"))
+			{
+				rd.setCuisineCategory("Karnataka");
+			}
+			else if(listContainsString(taglist,"Sindhi"))
+			{
+				rd.setCuisineCategory("Sindhi");
+			}
+			else if(listContainsString(taglist,"Chinese"))
 			{
 				rd.setCuisineCategory("Chinese");
 			}
-			else if(taglist.contains("Continental food"))
+			else if(listContainsString(taglist,"Italian"))
 			{
-				rd.setCuisineCategory("Continental food");
+				rd.setCuisineCategory("Italian");
 			}
+			else if(listContainsString(taglist,"South Indian"))
+			{
+				rd.setCuisineCategory("Indian");
+			}
+			else if(listContainsString(taglist,"Indian"))
+			{
+				rd.setCuisineCategory("Indian");
+			}	
 		    else
 		    {
 		    	rd.setCuisineCategory("NA");
@@ -158,6 +211,17 @@ public class ScraperJsoup {
 		    	
 			
 		}
+	}
+	
+	private static boolean listContainsString (List<String> tagList, String valuetoCheck) {
+		boolean valuecontains = false;
+		for (String tag : tagList) {
+			if (tag.contains(valuetoCheck)) {
+				valuecontains = true;
+				break;
+			}
+		}
+		return valuecontains;
 	}
 
 }
