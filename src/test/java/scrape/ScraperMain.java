@@ -3,6 +3,8 @@ package scrape;
 import java.util.List;
 
 import pojo.RecipeData;
+import report.HTMLReportGenerator;
+import report.JSONReportGenerator;
 
 public class ScraperMain {
 	
@@ -16,5 +18,8 @@ public class ScraperMain {
 		
 		System.out.println("Data:" + recipeData);
 		System.out.println("RecipeSize: " + recipeData.size());
+		
+		HTMLReportGenerator.generateReport(recipeData);
+		JSONReportGenerator.generateReport(recipeData);
 	}
 }
