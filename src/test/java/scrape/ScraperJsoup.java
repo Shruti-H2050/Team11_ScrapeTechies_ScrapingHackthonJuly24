@@ -138,7 +138,7 @@ public class ScraperJsoup {
 			{
 				rd.setFoodCategory("Vegan");
 			}
-			
+			// cuisine category
             else if(listContainsString(taglist,"Rajasthani"))
 			{
 				rd.setCuisineCategory("Rajasthani");
@@ -187,22 +187,83 @@ public class ScraperJsoup {
 			{
 				rd.setCuisineCategory("Sindhi");
 			}
-			else if(listContainsString(taglist,"Chinese"))
+			else if(listContainsString(taglist,"Chhattisgarhi"))
 			{
-				rd.setCuisineCategory("Chinese");
+				rd.setCuisineCategory("Chhattisgarhi");
 			}
-			else if(listContainsString(taglist,"Italian"))
+			else if(listContainsString(taglist,"Madhya pradesh"))
 			{
-				rd.setCuisineCategory("Italian");
+				rd.setCuisineCategory("Madhya pradesh");
+			}
+			else if(listContainsString(taglist,"Assamese"))
+			{
+				rd.setCuisineCategory("Assamese");
+			}
+			else if(listContainsString(taglist,"Manipuri"))
+			{
+				rd.setCuisineCategory("Manipuri");
+			}
+			else if(listContainsString(taglist,"Tripuri"))
+			{
+				rd.setCuisineCategory("Tripuri");
+			}
+			else if(listContainsString(taglist,"Sikkimese"))
+			{
+				rd.setCuisineCategory("Sikkimese");
+			}
+			else if(listContainsString(taglist,"Mizo"))
+			{
+				rd.setCuisineCategory("Mizo");
+			}
+			else if(listContainsString(taglist,"Arunachali"))
+			{
+				rd.setCuisineCategory("Arunachali");
+			}
+			else if(listContainsString(taglist,"uttarakhand"))
+			{
+				rd.setCuisineCategory("uttarakhand");
+			}
+			else if(listContainsString(taglist,"Haryanvi"))
+			{
+				rd.setCuisineCategory("Haryanvi");
+			}
+			else if(listContainsString(taglist,"Goan"))
+			{
+				rd.setCuisineCategory("Goan");
+			}
+			else if(listContainsString(taglist,"Kashmiri"))
+			{
+				rd.setCuisineCategory("Kashmiri");
+			}
+			else if(listContainsString(taglist,"Awadhi"))
+			{
+				rd.setCuisineCategory("Awadhi");
+			}
+			else if(listContainsString(taglist,"Bihar"))
+			{
+				rd.setCuisineCategory("Bihar");
+			}
+			else if(listContainsString(taglist,"Uttar pradesh"))
+			{
+				rd.setCuisineCategory("Uttar pradesh");
+			}
+			else if(listContainsString(taglist,"Delhi"))
+			{
+				rd.setCuisineCategory("Delhi");
 			}
 			else if(listContainsString(taglist,"South Indian"))
 			{
-				rd.setCuisineCategory("Indian");
+				rd.setCuisineCategory("South Indian");
+			}
+			else if(listContainsString(taglist,"North Indian"))
+			{
+				rd.setCuisineCategory("North Indian");
 			}
 			else if(listContainsString(taglist,"Indian"))
 			{
 				rd.setCuisineCategory("Indian");
 			}	
+			//end of selection for cuisine category
 		    else
 		    {
 		    	rd.setCuisineCategory("NA");
@@ -212,7 +273,7 @@ public class ScraperJsoup {
 			
 		}
 	}
-	
+	//method to extract name of the cuisine 
 	private static boolean listContainsString (List<String> tagList, String valuetoCheck) {
 		boolean valuecontains = false;
 		for (String tag : tagList) {
