@@ -52,11 +52,6 @@ public class ScraperMain {
 		FilterCriteria fc = new ExcelReader().readCriteriaSheet();
 		
 		//Filter LFV Elimination List 
-//		List<RecipeData> lfvEliminationList = scrapedRecipeDataList.stream().filter(
-//				rd -> !rd.getIngredients().stream().anyMatch(ings -> fc.getLfvEliminate().contains(ings.toLowerCase())))
-//				.filter(rd -> !rd.getPreparationMethod().(fc.getLfvEliminate()))
-//				.collect(Collectors.toList());
-		
 		List<RecipeData> lfvEliminationList = scrapedRecipeDataList.stream().filter(
 				rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getIngredients().toString().toLowerCase().contains(e)))
 				.collect(Collectors.toList());
