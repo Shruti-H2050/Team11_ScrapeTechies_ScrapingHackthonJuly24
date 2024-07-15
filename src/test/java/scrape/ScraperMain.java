@@ -58,7 +58,7 @@ public class ScraperMain {
 //				.collect(Collectors.toList());
 		
 		List<RecipeData> lfvEliminationList = scrapedRecipeDataList.stream().filter(
-				rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getPreparationMethod().toString().toLowerCase().contains(e)))
+				rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getIngredients().toString().toLowerCase().contains(e)))
 				.collect(Collectors.toList());
 		
 		JSONReportGenerator.generateReport(lfvEliminationList, "lfvEliminate.json");
