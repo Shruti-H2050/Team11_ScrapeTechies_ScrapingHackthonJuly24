@@ -4,22 +4,31 @@ package scrape;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import static scrape.ScraperMain.*;
 
 import pojo.RecipeData;
 
 public class ScraperJsoup {
 	
 
+ExecutorService exec = Executors.newFixedThreadPool(20);
+	
 	public List<RecipeData> extractRecipeData(String baseUrl) {
 	
 		List<RecipeData> dataList =  new ArrayList<>();
-		//String[] alphabets = {"A","B","C"};
+		String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		
-		String[] alphabets = {"A"};
+		//String[] alphabets = {"B"};
 		
 		for(String a : alphabets) {
 		
@@ -35,32 +44,53 @@ public class ScraperJsoup {
 		
 		System.out.println("extractByAZ Connecting: " + azurl);
 		
+		Runnable task = () -> {
+			String pageurl=null;
 		try {
-			Document recipeDoc = Jsoup.connect(azurl).get();
+			Document recipeDoc = Jsoup.connect(azurl).timeout(20000).get();
 			
 			System.out.println("extractByAZ Connected: " + azurl);
 			
-			//int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
+		int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
 			
-			int pageCount = 2;
+			//int pageCount = 2;
 			
 			for (int i=1;i<=pageCount;i++) {
 				
-				String pageurl = azurl + "&pageindex=" + i;
+				pageurl = azurl + "&pageindex=" + i;
 				extractionByPageIndex(dataList, pageurl);
 			
 			}		
 			
 		}catch(IOException e) {
+			try {
+				System.err.println("Exception retrying.." + pageurl);
+				extractionByPageIndex(dataList, pageurl);
+			} catch (IOException e1) {
+				ERROR_MAP.put(pageurl,null);
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
+			//e.printStackTrace();
+		}
+		
+		};
+		Thread t = new Thread(task);
+		t.start();
+		try {
+			t.join();
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
 	}
+	
 	
 	private void extractionByPageIndex(List<RecipeData> dataList, String pageurl) throws IOException {
 		
 		System.out.println(" extractionByPageIndex Connecting: " + pageurl);
-		Document recipeDoc = Jsoup.connect(pageurl).get();
+		Document recipeDoc = Jsoup.connect(pageurl).timeout(20000).get();
 		System.out.println("extractionByPageIndex Connected: " + pageurl);
 		List<Element> elements = recipeDoc.select("div[class=rcc_recipecard]");
 		
@@ -71,75 +101,122 @@ public class ScraperJsoup {
 			
 			RecipeData data = new RecipeData();
 			
-			data.setRecipeId(e.attribute("id").getValue());
-			data.setRecipeUrl(e.select("span[class=rcc_recipename]").select("a[href]").attr("href"));
-			data.setRecipeName(e.select("span[class=rcc_recipename]").select("a[href]").text());
+			data.setRecipeId(e.attribute("id").getValue()); //Extracting RecipeId
+			data.setRecipeUrl(e.select("span[class=rcc_recipename]").select("a[href]").attr("href")); //Extracting RecipeUrl
+			data.setRecipeName(e.select("span[class=rcc_recipename]").select("a[href]").text()); //Extracting RecipeName
 			
 			dataList.add(data);
 		}
 		
-		
 		for (RecipeData rd : dataList) {
 			
-			List<String> ings =  new ArrayList<>();
-			System.out.println(" recipeUrl Connecting: " + "https://www.tarladalal.com/"+ rd.getRecipeUrl());
+			Runnable r = () -> {
+				try {
+					extractFields(rd);
+				} catch (IOException e1) {
+					try {
+						System.err.println("Exception retrying.." + rd);
+						extractFields(rd);
+					} catch (IOException e2) {
+						// TODO Auto-generated catch block
+						ERROR_MAP.put(rd.getRecipeUrl(), rd);
+						e2.printStackTrace();
+					}
+					//e1.printStackTrace();
+				}
+			};
+			Thread t = new Thread(r);
+			t.start();
+			try {
+				t.join();
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+		    	
+		}
+	}
+
+	private void extractFields(RecipeData rd) throws IOException {
+		System.out.println(" recipeUrl Connecting: " + "https://www.tarladalal.com/"+ rd.getRecipeUrl());
+		
+		Document ingredientsDoc = Jsoup.connect("https://www.tarladalal.com/"+ rd.getRecipeUrl()).timeout(20000).get();
+		System.out.println(" recipeUrl Connected: ");
+		
+		//Extracting Ingredients
+		
+		List<String> ings =  new ArrayList<>();
+		for(Element e : ingredientsDoc.select("span[itemprop=recipeIngredient]")) {
 			
-			Document ingredientsDoc = Jsoup.connect("https://www.tarladalal.com/"+ rd.getRecipeUrl()).get();
-			System.out.println(" recipeUrl Connected: ");
+			ings.add(e.select("a").text());
+								
+		}
+		rd.setIngredients(ings);
+		
+		//Extracting Preparation Time
+		
+		rd.setPrepTime(ingredientsDoc.select("Time[itemprop=prepTime]").text());
+		
+		//Extracting Cook Time
+		
+		rd.setCookTime(ingredientsDoc.select("Time[itemprop=cookTime]").text());
+		
+		//Extracting Recipe Description
+		
+		rd.setRecipeDescription(ingredientsDoc.select("p[id=recipe_description]").text());
+		
+		//Extracting Tags
+		
+		List<String> taglist = new ArrayList<>();
+		
+		for(Element tags: ingredientsDoc.select("div[id=recipe_tags] a"))
+		{
+			taglist.add(tags.text());
+		}
+					
+		rd.setTag(taglist);
+		
+		//Extracting preparation method
+		
+		List<String> methodlist = new ArrayList<>();
 			
-			for(Element e : ingredientsDoc.select("span[itemprop=recipeIngredient]")) {
-				
-				ings.add(e.select("a").text());
-									
-			}
-			
-			rd.setPrepTime(ingredientsDoc.select("Time[itemprop=prepTime]").text());
-			rd.setCookTime(ingredientsDoc.select("Time[itemprop=cookTime]").text());
-			rd.setRecipeDescription(ingredientsDoc.select("p[id=recipe_description]").text());
-			
-			rd.setIngredients(ings);
-			
-			List<String> taglist = new ArrayList<>();
-			for(Element tags: ingredientsDoc.select("div[id=recipe_tags] a"))
-			{
-				taglist.add(tags.text());
-			}
-			System.out.println("Taglist:"+taglist);
-			rd.setTag(taglist);
-			if(taglist.contains("BreakFast"))
-			{
-				rd.setRecipeCategory("BreakFast");
-			}
-			else if(taglist.contains("Lunch"))
-			{
-				rd.setRecipeCategory("Lunch");
-			}
-			else if(taglist.contains("Dinner"))
-			{
-				rd.setRecipeCategory("Dinner");
-			}
-		    else if(taglist.contains("Snack"))
-			{
-				rd.setRecipeCategory("Snack");
-			}
-		    else
-		    {
-				rd.setRecipeCategory("NA");
-			}
-			if(taglist.contains("Veg"))
-			{
-				rd.setFoodCategory("Veg");
-			}
-			else if(taglist.contains("Non Veg"))
-			{
-				rd.setFoodCategory("Non Veg");
-			}
-			else if(taglist.contains("Vegan"))
-			{
-				rd.setFoodCategory("Vegan");
-			}
-			// cuisine category
-            else if(listContainsString(taglist,"Rajasthani"))
+		for(Element method: ingredientsDoc.select("div[id=recipe_small_steps] li") )
+		{
+			methodlist.add(method.text());
+		}
+		rd.setPreparationMethod(methodlist);
+		
+		//Extracting Servings
+		
+		rd.setServings(ingredientsDoc.select("#ctl00_cntrightpanel_lblServes").text());
+		
+		//Extracting nutrientValues
+		
+		Element rcpnutsDiv = ingredientsDoc.selectFirst("#rcpnuts");
+					
+		List<String> nutrientValues = new ArrayList<>();
+		if (rcpnutsDiv != null) {
+		   
+		Elements nutrientTableRows = rcpnutsDiv.select("table tr");
+		  
+		for (Element row : nutrientTableRows) {
+			Elements cells = row.select("td");
+		    for (Element cell : cells) {
+		           String nutrientValue = cell.text();
+		           nutrientValues.add(nutrientValue);
+		       }
+		   }
+         
+		rd.setNutrientValues(nutrientValues);
+		}	
+		else 
+		{
+			nutrientValues.add("Not Given");
+			rd.setNutrientValues(nutrientValues);
+		}
+		
+		//Extracting Cuisine Category
+		
+		 if(listContainsString(taglist,"Rajasthani"))
 			{
 				rd.setCuisineCategory("Rajasthani");
 			}
@@ -263,28 +340,156 @@ public class ScraperJsoup {
 			{
 				rd.setCuisineCategory("Indian");
 			}	
+			else if(listContainsString(taglist,"Chinese"))
+			{
+				rd.setCuisineCategory("Chinese");
+			}	
+			else if(listContainsString(taglist,"American"))
+			{
+				rd.setCuisineCategory("American");
+			}	
+			else if(listContainsString(taglist,"French"))
+			{
+				rd.setCuisineCategory("French");
+			}	
+			else if(listContainsString(taglist,"Italian"))
+			{
+				rd.setCuisineCategory("Italian");
+			}
+			else if(listContainsString(taglist,"Lebanese"))
+			{
+				rd.setCuisineCategory("Lebanese");
+			}
+			else if(listContainsString(taglist,"Mexican"))
+			{
+				rd.setCuisineCategory("Mexican");
+			}
+			else if(listContainsString(taglist,"Thai"))
+			{
+				rd.setCuisineCategory("Thai");
+			}
+		 	
 			//end of selection for cuisine category
 		    else
 		    {
 		    	rd.setCuisineCategory("NA");
-				rd.setFoodCategory("NA");
+				
 			}
 		    	
+		 //Extracting Recipe Category
+		
+		List<CharSequence> R_category ;
+		
+		
+		R_category = taglist.stream().collect(Collectors.toList());
+		Pattern p1 = Pattern.compile( 
+	             "Snacks" , Pattern.CASE_INSENSITIVE); 
+		Pattern p2 = Pattern.compile( 
+	            "BreakFast", Pattern.CASE_INSENSITIVE);
+		Pattern p3 = Pattern.compile( 
+	             "Lunch" , Pattern.CASE_INSENSITIVE); 
+		Pattern p4 = Pattern.compile( 
+	            "Dinner", Pattern.CASE_INSENSITIVE);
+		for(CharSequence e:R_category){
+		
+			Matcher matcher;
+			matcher=p1.matcher(e);
+		
+		    while(matcher.find())
+		     {
+		    	String S=p1.toString();
+		        rd.setRecipeCategory(S);
+		        }
+		    
+			matcher=p2.matcher(e);
+		
+		    while(matcher.find())
+		     {
+		    	String S=p2.toString();
+		        rd.setRecipeCategory(S);
+		        }
+		    
+			matcher=p3.matcher(e);
+		
+		    while(matcher.find())
+		     {
+		    	String S=p3.toString();
+		        rd.setRecipeCategory(S);
+		        }
+		    
+			matcher=p4.matcher(e);
+		
+		    while(matcher.find())
+		     {
+		    	String S=p4.toString();
+		        rd.setRecipeCategory(S);
+		        }
+		 
+		}
+		if(rd.getRecipeCategory()==null)
+		{
+			rd.setRecipeCategory("NA");
+		}
+		
+	
+		//Extracting Food Category
+		
+        List<CharSequence> F_category ;
+		
+		
+        F_category = taglist.stream().collect(Collectors.toList());
+		Pattern p5 = Pattern.compile( 
+	             "Veg" , Pattern.CASE_INSENSITIVE); 
+		Pattern p6 = Pattern.compile( 
+	            "Non Veg", Pattern.CASE_INSENSITIVE);
+		Pattern p7 = Pattern.compile( 
+	             "Vegan" , Pattern.CASE_INSENSITIVE); 
+		Pattern p8 = Pattern.compile( 
+	            "Eggitarian", Pattern.CASE_INSENSITIVE);
+		Pattern p9 = Pattern.compile( 
+	             "Jain" , Pattern.CASE_INSENSITIVE);
+		for(CharSequence e:F_category){
+		
+			Matcher matcher;
+			matcher=p5.matcher(e);
+		
+		    while(matcher.find())
+		     {
+		    	String S=p5.toString();
+		        rd.setFoodCategory(S);
+		        }
+		    
+			matcher=p6.matcher(e);
+		
+		    while(matcher.find())
+		     {
+		    	String S=p6.toString();
+		        rd.setFoodCategory(S);
+		        }
+		    matcher=p7.matcher(e);
 			
-		}
-	}
-	//method to extract name of the cuisine 
-	private static boolean listContainsString (List<String> tagList, String valuetoCheck) {
-		boolean valuecontains = false;
-		for (String tag : tagList) {
-			if (tag.contains(valuetoCheck)) {
-				valuecontains = true;
-				break;
+		    while(matcher.find())
+		     {
+		    	String S=p7.toString();
+		        rd.setFoodCategory(S);
+		        }
 			}
+		
+		if(rd.getFoodCategory()==null)
+		{
+			rd.setFoodCategory("NA");
 		}
-		return valuecontains;
 	}
-
+	
+private static boolean listContainsString (List<String> tagList, String valuetoCheck) {
+boolean valuecontains = false;
+for (String tag : tagList) {
+	if (tag.contains(valuetoCheck)) {
+		valuecontains = true;
+		break;
+	}
 }
-
+return valuecontains;
+}
+}
 
