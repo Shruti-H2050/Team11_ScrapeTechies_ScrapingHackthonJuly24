@@ -2,7 +2,9 @@ package scrape;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
@@ -13,12 +15,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import static scrape.ScraperMain.*;
 
 import pojo.RecipeData;
 
 public class ScraperJsoup{
 	
-	ExecutorService exec = Executors.newFixedThreadPool(20);
+	//ExecutorService exec = Executors.newFixedThreadPool(20);
 	
 	public List<RecipeData> extractRecipeData(String baseUrl) {
 	
@@ -36,31 +39,57 @@ public class ScraperJsoup{
 		}
 		return dataList;
 	}
+	
+	private void extractionByPageIndexMemberOnly(List<RecipeData> dataList,String pageurl) {
+		try {
+			Map<String,String> dataMap =  new HashMap<String,String>();
+			dataMap.put("ctl00$cntleftpanel$rbltdmem", "member");
+			dataMap.put("__EVENTTARGET", "ctl00$cntleftpanel$rbltdmem$1");
+			dataMap.put("__EVENTARGUMENT", "");
+			System.out.println("connecting.. " + pageurl);
+			List<Element> elements  = Jsoup.connect(pageurl).data(dataMap).timeout(20000).post().select("div[class=rcc_recipecard]");
+			System.out.println("connected..");
+			extractRecipe(dataList, elements);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	private void extractByAZ(String azurl,List<RecipeData> dataList) {
 		
 		System.out.println("extractByAZ Connecting: " + azurl);
 		
 		Runnable task = () -> {
-		
+			String pageurl=azurl;
 		try {
 			Document recipeDoc = Jsoup.connect(azurl).timeout(20000).get();
 			
+						
 			System.out.println("extractByAZ Connected: " + azurl);
 			
-		//int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
+			int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
 			
-			int pageCount = 2;
+			//int pageCount = 2;
 			
 			for (int i=1;i<=pageCount;i++) {
 				
-				String pageurl = azurl + "&pageindex=" + i;
-				extractionByPageIndex(dataList, pageurl);
+				pageurl = azurl + "&pageindex=" + i;
+				//extractionByPageIndex(dataList, pageurl);
+				extractionByPageIndexMemberOnly(dataList,pageurl);
 			
 			}		
 			
 		}catch(IOException e) {
-			e.printStackTrace();
+			try {
+				System.err.println("Exception retrying.." + pageurl);
+				extractionByPageIndex(dataList, pageurl);
+			} catch (IOException e1) {
+				ERROR_MAP.put(pageurl,null);
+				e1.printStackTrace();
+			}
+			
 		}
 		
 		};
@@ -74,7 +103,6 @@ public class ScraperJsoup{
 		
 	}
 	
-	
 	private void extractionByPageIndex(List<RecipeData> dataList, String pageurl) throws IOException {
 		
 		System.out.println(" extractionByPageIndex Connecting: " + pageurl);
@@ -84,7 +112,10 @@ public class ScraperJsoup{
 		
 		//System.out.println("Element" + elements);
 		
-		
+		extractRecipe(dataList, elements);
+	}
+
+	private void extractRecipe(List<RecipeData> dataList, List<Element> elements) {
 		for (Element e : elements) {
 			
 			RecipeData data = new RecipeData();
@@ -94,15 +125,18 @@ public class ScraperJsoup{
 			data.setRecipeName(e.select("span[class=rcc_recipename]").select("a[href]").text()); //Extracting RecipeName
 			
 			dataList.add(data);
-		}
-		
-		for (RecipeData rd : dataList) {
 			
 			Runnable r = () -> {
 				try {
-					extractFields(rd);
+					extractFields(data);
 				} catch (IOException e1) {
-					e1.printStackTrace();
+					try {
+						System.err.println("Exception retrying.." + data);
+						extractFields(data);
+					} catch (IOException e2) {
+						ERROR_MAP.put(data.getRecipeUrl(), data);
+						e2.printStackTrace();
+					}
 				}
 			};
 			Thread t = new Thread(r);
