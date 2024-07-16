@@ -8,13 +8,13 @@ import pojo.RecipeData;
 
 public class HTMLReportGenerator {
 
-    public static void generateReport(List<RecipeData> data) {
+    public static void generateReport(List<RecipeData> data, String fileName, String title) {
         StringBuilder htmlContent = new StringBuilder();
 
         htmlContent.append("<html>");
-        htmlContent.append("<head><title>Scraped Data Report</title></head>");
+        htmlContent.append("<head><title>" + title + "</title></head>");
         htmlContent.append("<body>");
-        htmlContent.append("<h1>Scraped Data Report</h1>");
+        htmlContent.append("<h1>" + title + "</h1>");
         htmlContent.append("<table border='1'>");
         htmlContent.append("<tr>");
         htmlContent.append("<th>Recipe ID</th>");
@@ -56,7 +56,7 @@ public class HTMLReportGenerator {
         htmlContent.append("</body>");
         htmlContent.append("</html>");
 
-        try (FileWriter writer = new FileWriter("report.html")) {
+        try (FileWriter writer = new FileWriter(fileName)) {
             writer.write(htmlContent.toString());
         } catch (IOException e) {
             e.printStackTrace();

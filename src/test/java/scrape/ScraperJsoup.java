@@ -13,6 +13,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import static scrape.ScraperMain.*;
 
 import pojo.RecipeData;
 
@@ -23,9 +24,9 @@ public class ScraperJsoup{
 	public List<RecipeData> extractRecipeData(String baseUrl) {
 	
 		List<RecipeData> dataList =  new ArrayList<>();
-		//String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		
-		String[] alphabets = {"B"};
+		//String[] alphabets = {"B"};
 		
 		for(String a : alphabets) {
 		
@@ -42,25 +43,35 @@ public class ScraperJsoup{
 		System.out.println("extractByAZ Connecting: " + azurl);
 		
 		Runnable task = () -> {
-		
+			String pageurl=null;
 		try {
 			Document recipeDoc = Jsoup.connect(azurl).timeout(20000).get();
 			
+						
 			System.out.println("extractByAZ Connected: " + azurl);
 			
-		//int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
+		int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
 			
-			int pageCount = 2;
+			//int pageCount = 2;
 			
 			for (int i=1;i<=pageCount;i++) {
 				
-				String pageurl = azurl + "&pageindex=" + i;
+				pageurl = azurl + "&pageindex=" + i;
 				extractionByPageIndex(dataList, pageurl);
 			
 			}		
 			
 		}catch(IOException e) {
-			e.printStackTrace();
+			try {
+				System.err.println("Exception retrying.." + pageurl);
+				extractionByPageIndex(dataList, pageurl);
+			} catch (IOException e1) {
+				ERROR_MAP.put(pageurl,null);
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			//e.printStackTrace();
 		}
 		
 		};
@@ -102,7 +113,15 @@ public class ScraperJsoup{
 				try {
 					extractFields(rd);
 				} catch (IOException e1) {
-					e1.printStackTrace();
+					try {
+						System.err.println("Exception retrying.." + rd);
+						extractFields(rd);
+					} catch (IOException e2) {
+						// TODO Auto-generated catch block
+						ERROR_MAP.put(rd.getRecipeUrl(), rd);
+						e2.printStackTrace();
+					}
+					//e1.printStackTrace();
 				}
 			};
 			Thread t = new Thread(r);
