@@ -2,7 +2,9 @@ package scrape;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
@@ -19,14 +21,14 @@ import pojo.RecipeData;
 
 public class ScraperJsoup{
 	
-	ExecutorService exec = Executors.newFixedThreadPool(20);
+	//ExecutorService exec = Executors.newFixedThreadPool(20);
 	
 	public List<RecipeData> extractRecipeData(String baseUrl) {
 	
 		List<RecipeData> dataList =  new ArrayList<>();
-		String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		//String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		
-		//String[] alphabets = {"B"};
+		String[] alphabets = {"B"};
 		
 		for(String a : alphabets) {
 		
@@ -37,27 +39,45 @@ public class ScraperJsoup{
 		}
 		return dataList;
 	}
+	
+	private void extractionByPageIndexMemberOnly(List<RecipeData> dataList,String pageurl) {
+		try {
+			Map<String,String> dataMap =  new HashMap<String,String>();
+			dataMap.put("ctl00$cntleftpanel$rbltdmem", "member");
+			dataMap.put("__EVENTTARGET", "ctl00$cntleftpanel$rbltdmem$1");
+			dataMap.put("__EVENTARGUMENT", "");
+			System.out.println("connecting.. " + pageurl);
+			List<Element> elements  = Jsoup.connect(pageurl).data(dataMap).timeout(20000).post().select("div[class=rcc_recipecard]");
+			System.out.println("connected..");
+			extractRecipe(dataList, elements);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	private void extractByAZ(String azurl,List<RecipeData> dataList) {
 		
 		System.out.println("extractByAZ Connecting: " + azurl);
 		
 		Runnable task = () -> {
-			String pageurl=null;
+			String pageurl=azurl;
 		try {
 			Document recipeDoc = Jsoup.connect(azurl).timeout(20000).get();
 			
 						
 			System.out.println("extractByAZ Connected: " + azurl);
 			
-		int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
+			int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
 			
 			//int pageCount = 2;
 			
 			for (int i=1;i<=pageCount;i++) {
 				
 				pageurl = azurl + "&pageindex=" + i;
-				extractionByPageIndex(dataList, pageurl);
+				//extractionByPageIndex(dataList, pageurl);
+				extractionByPageIndexMemberOnly(dataList,pageurl);
 			
 			}		
 			
@@ -67,11 +87,9 @@ public class ScraperJsoup{
 				extractionByPageIndex(dataList, pageurl);
 			} catch (IOException e1) {
 				ERROR_MAP.put(pageurl,null);
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
-			//e.printStackTrace();
 		}
 		
 		};
@@ -85,7 +103,6 @@ public class ScraperJsoup{
 		
 	}
 	
-	
 	private void extractionByPageIndex(List<RecipeData> dataList, String pageurl) throws IOException {
 		
 		System.out.println(" extractionByPageIndex Connecting: " + pageurl);
@@ -95,7 +112,10 @@ public class ScraperJsoup{
 		
 		//System.out.println("Element" + elements);
 		
-		
+		extractRecipe(dataList, elements);
+	}
+
+	private void extractRecipe(List<RecipeData> dataList, List<Element> elements) {
 		for (Element e : elements) {
 			
 			RecipeData data = new RecipeData();
@@ -105,23 +125,18 @@ public class ScraperJsoup{
 			data.setRecipeName(e.select("span[class=rcc_recipename]").select("a[href]").text()); //Extracting RecipeName
 			
 			dataList.add(data);
-		}
-		
-		for (RecipeData rd : dataList) {
 			
 			Runnable r = () -> {
 				try {
-					extractFields(rd);
+					extractFields(data);
 				} catch (IOException e1) {
 					try {
-						System.err.println("Exception retrying.." + rd);
-						extractFields(rd);
+						System.err.println("Exception retrying.." + data);
+						extractFields(data);
 					} catch (IOException e2) {
-						// TODO Auto-generated catch block
-						ERROR_MAP.put(rd.getRecipeUrl(), rd);
+						ERROR_MAP.put(data.getRecipeUrl(), data);
 						e2.printStackTrace();
 					}
-					//e1.printStackTrace();
 				}
 			};
 			Thread t = new Thread(r);
