@@ -27,19 +27,35 @@ public class ExcelReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		//LFV Elimination Excel Data
 		List<String> lfvEliminationList = getCriteriaList(workbook, "Final list for LFV Elimination ", 0, 2);
-		List<String> lfvaddList = getCriteriaList(workbook, "Final list for LFV Elimination ", 1,2);
+		List<String> lfvAddList = getCriteriaList(workbook, "Final list for LFV Elimination ", 1,2);
 		List<String> lfvAddNotVeganList = getCriteriaList(workbook, "Final list for LFV Elimination ", 2,2);
 		List<String> lfvRecipesToAvoidList = getCriteriaList(workbook, "Final list for LFV Elimination ", 3,2);
 		List<String> lfvOptionalRecipeList = getCriteriaList(workbook, "Final list for LFV Elimination ", 4,2);
 		
-       	
+		//LCHF Elimination Excel Data 
+				List<String> lchfEliminationList = getCriteriaList(workbook, "Final list for LCHFElimination ", 0, 2);
+				List<String> lchfAddList = getCriteriaList(workbook, "Final list for LCHFElimination ", 1,2);
+				List<String> lchfRecipesToAvoidList = getCriteriaList(workbook, "Final list for LCHFElimination ", 3,2);
+				List<String> lchfFoodProcessingList = getCriteriaList(workbook, "Final list for LCHFElimination ", 4,2);
+				
+		
+       	//LFV Excel Extracted Data setting into Pojo
     	fc.setLfvEliminate(lfvEliminationList);
-    	fc.setLfvAdd(lfvaddList);
+    	fc.setLfvAdd(lfvAddList);
     	fc.setLfvAddNotVegan(lfvAddNotVeganList);
-    	fc.setReceipeAvoid(lfvRecipesToAvoidList);
-    	fc.setOptionalRecipe(lfvOptionalRecipeList);
+    	fc.setLfvReceipeToAvoid(lfvRecipesToAvoidList);
+    	fc.setLfvOptionalRecipe(lfvOptionalRecipeList);
     	
+    	//LCHF Excel Extracted Data setting into Pojo
+    	fc.setLchfEliminate(lchfEliminationList);
+    	fc.setLchfAdd(lchfAddList);
+    	fc.setLchfReceipeToAvoid(lchfRecipesToAvoidList);
+    	fc.setLchfFoodProcessing(lchfFoodProcessingList);
+    	
+    	   	
     	try {
 			workbook.close();
 		} catch (IOException e) {
@@ -49,7 +65,8 @@ public class ExcelReader {
     	return fc;
 
 	}
-
+	
+	//Fetch the Elimination Excel Full Data
 	private List<String> getCriteriaList(XSSFWorkbook workbook, String sheetName, int colIndex, int rowIndex) 
 	{	
 		List<String> criteriaList= new ArrayList<>();

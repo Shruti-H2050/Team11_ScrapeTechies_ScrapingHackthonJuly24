@@ -47,6 +47,7 @@ public class ScraperJsoup{
 		try {
 			Document recipeDoc = Jsoup.connect(azurl).timeout(20000).get();
 			
+						
 			System.out.println("extractByAZ Connected: " + azurl);
 			
 		int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
