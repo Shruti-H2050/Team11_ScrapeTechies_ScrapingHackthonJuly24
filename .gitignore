@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 /target/
 .project
+=======
+/target/
+/test-output/
+/test-output-thread/
+>>>>>>> origin/master

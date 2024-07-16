@@ -2,13 +2,14 @@ package report;
 
 import java.io.FileWriter;
 import java.io.IOException;
+
 import java.util.List;
 
 import pojo.RecipeData;
 
 public class HTMLReportGenerator {
 
-    public static void generateReport(List<RecipeData> data) {
+    public static void generateReport(List<RecipeData> data, String fileName) {
         StringBuilder htmlContent = new StringBuilder();
 
         htmlContent.append("<html>");
@@ -56,12 +57,12 @@ public class HTMLReportGenerator {
         htmlContent.append("</body>");
         htmlContent.append("</html>");
 
-        try (FileWriter writer = new FileWriter("report.html")) {
+        try (FileWriter writer = new FileWriter(fileName)) {
             writer.write(htmlContent.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("HTML report generated successfully.");
+        System.out.println("HTML report generated successfully: " + fileName);
     }
 }

@@ -1,3 +1,152 @@
+//<<<<<<< HEAD
+//package pojo;
+//
+//import java.util.List;
+//
+////import lombok.Data;
+//
+////@Data
+//public class RecipeData {
+//	
+//	private String recipeId;
+//	private String recipeName;
+//	private String recipeCategory;
+//    private String foodCategory;
+//    private List<String> ingredients;
+//    private String prepTime;
+//	private String cookTime;
+//	private List<String> tag;
+//	private String servings;
+//    private String cuisineCategory;
+//    private String recipeDescription;
+//    private List<String> preparationMethod;
+//    private List<String> nutrientValues;	
+//	private String recipeUrl;
+//	    
+//    public String getRecipeId() {
+//        return recipeId;
+//    }
+//
+//    public void setRecipeId(String recipeId) {
+//        this.recipeId = recipeId;
+//    }
+//
+//    public String getRecipeName() {
+//        return recipeName;
+//    }
+//
+//    public void setRecipeName(String recipeName) {
+//        this.recipeName = recipeName;
+//    }
+//
+//    public String getRecipeCategory() {
+//        return recipeCategory;
+//    }
+//
+//    public void setRecipeCategory(String recipeCategory) {
+//        this.recipeCategory = recipeCategory;
+//    }
+//
+//    public String getFoodCategory() {
+//        return foodCategory;
+//    }
+//
+//    public void setFoodCategory(String foodCategory) {
+//        this.foodCategory = foodCategory;
+//    }
+//
+//    public List<String> getIngredients() {
+//        return ingredients;
+//    }
+//
+//    public void setIngredients(List<String> ingredients) {
+//        this.ingredients = ingredients;
+//    }
+//
+//    public String getPrepTime() {
+//        return prepTime;
+//    }
+//
+//    public void setPrepTime(String prepTime) {
+//        this.prepTime = prepTime;
+//    }
+//
+//    public String getCookTime() {
+//        return cookTime;
+//    }
+//
+//    public void setCookTime(String cookTime) {
+//        this.cookTime = cookTime;
+//    }
+//
+//    public List<String> getTag() {
+//        return tag;
+//    }
+//
+//    public void setTag(List<String> tag) {
+//        this.tag = tag;
+//    }
+//
+//    public String getServings() {
+//        return servings;
+//    }
+//
+//    public void setServings(String servings) {
+//        this.servings = servings;
+//    }
+//
+//    public String getCuisineCategory() {
+//        return cuisineCategory;
+//    }
+//
+//    public void setCuisineCategory(String cuisineCategory) {
+//        this.cuisineCategory = cuisineCategory;
+//    }
+//
+//    public String getRecipeDescription() {
+//        return recipeDescription;
+//    }
+//
+//    public void setRecipeDescription(String recipeDescription) {
+//        this.recipeDescription = recipeDescription;
+//    }
+//
+//    public List<String> getPreparationMethod() {
+//        return preparationMethod;
+//    }
+//
+//    public void setPreparationMethod(List<String> methodlist) {
+//        this.preparationMethod = methodlist;
+//    }
+//
+//    public List<String> getNutrientValues() {
+//        return nutrientValues;
+//    }
+//
+//    public void setNutrientValues(List<String> nutrientValues2) {
+//        this.nutrientValues = nutrientValues2;
+//    }
+//
+//    public String getRecipeUrl() {
+//        return recipeUrl;
+//    }
+//
+//    public void setRecipeUrl(String recipeUrl) {
+//        this.recipeUrl = recipeUrl;
+//    }
+//	@Override
+//	public String toString() {
+//		return "/nRecipeData [recipeId=" + recipeId + ", recipeName=" + recipeName + ", recipeCategory=" + recipeCategory
+//				+ ", foodCategory=" + foodCategory + ", ingredients=" + ingredients + ", prepTime=" + prepTime
+//				+ ", cookTime=" + cookTime + ", tag=" + tag + ", servings=" + servings + ", cuisineCategory="
+//				+ cuisineCategory + ", recipeDescription=" + recipeDescription + ", preparationMethod="
+//				+ preparationMethod + ", nutrientValues=" + nutrientValues + ", recipeUrl=" + recipeUrl + "]";
+//	}
+//
+//	 
+//	
+//}
+//=======
 package pojo;
 
 import java.util.List;
@@ -21,127 +170,100 @@ public class RecipeData {
     private List<String> preparationMethod;
     private List<String> nutrientValues;	
 	private String recipeUrl;
-	    
-    public String getRecipeId() {
-        return recipeId;
-    }
-
-    public void setRecipeId(String recipeId) {
-        this.recipeId = recipeId;
-    }
-
-    public String getRecipeName() {
-        return recipeName;
-    }
-
-    public void setRecipeName(String recipeName) {
-        this.recipeName = recipeName;
-    }
-
-    public String getRecipeCategory() {
-        return recipeCategory;
-    }
-
-    public void setRecipeCategory(String recipeCategory) {
-        this.recipeCategory = recipeCategory;
-    }
-
-    public String getFoodCategory() {
-        return foodCategory;
-    }
-
-    public void setFoodCategory(String foodCategory) {
-        this.foodCategory = foodCategory;
-    }
-
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public String getPrepTime() {
-        return prepTime;
-    }
-
-    public void setPrepTime(String prepTime) {
-        this.prepTime = prepTime;
-    }
-
-    public String getCookTime() {
-        return cookTime;
-    }
-
-    public void setCookTime(String cookTime) {
-        this.cookTime = cookTime;
-    }
-
-    public List<String> getTag() {
-        return tag;
-    }
-
-    public void setTag(List<String> tag) {
-        this.tag = tag;
-    }
-
-    public String getServings() {
-        return servings;
-    }
-
-    public void setServings(String servings) {
-        this.servings = servings;
-    }
-
-    public String getCuisineCategory() {
-        return cuisineCategory;
-    }
-
-    public void setCuisineCategory(String cuisineCategory) {
-        this.cuisineCategory = cuisineCategory;
-    }
-
-    public String getRecipeDescription() {
-        return recipeDescription;
-    }
-
-    public void setRecipeDescription(String recipeDescription) {
-        this.recipeDescription = recipeDescription;
-    }
-
-    public List<String> getPreparationMethod() {
-        return preparationMethod;
-    }
-
-    public void setPreparationMethod(List<String> methodlist) {
-        this.preparationMethod = methodlist;
-    }
-
-    public List<String> getNutrientValues() {
-        return nutrientValues;
-    }
-
-    public void setNutrientValues(List<String> nutrientValues2) {
-        this.nutrientValues = nutrientValues2;
-    }
-
-    public String getRecipeUrl() {
-        return recipeUrl;
-    }
-
-    public void setRecipeUrl(String recipeUrl) {
-        this.recipeUrl = recipeUrl;
-    }
-	@Override
-	public String toString() {
-		return "/nRecipeData [recipeId=" + recipeId + ", recipeName=" + recipeName + ", recipeCategory=" + recipeCategory
-				+ ", foodCategory=" + foodCategory + ", ingredients=" + ingredients + ", prepTime=" + prepTime
-				+ ", cookTime=" + cookTime + ", tag=" + tag + ", servings=" + servings + ", cuisineCategory="
-				+ cuisineCategory + ", recipeDescription=" + recipeDescription + ", preparationMethod="
-				+ preparationMethod + ", nutrientValues=" + nutrientValues + ", recipeUrl=" + recipeUrl + "]";
+	
+	public String getRecipeId() {
+		return recipeId;
 	}
-
-	 
+	public void setRecipeId(String recipeId) {
+		this.recipeId = recipeId;
+	}
+	public String getRecipeName() {
+		return recipeName;
+	}
+	public void setRecipeName(String recipeName) {
+		this.recipeName = recipeName;
+	}
+	public String getRecipeCategory() {
+		return recipeCategory;
+	}
+	public void setRecipeCategory(String recipeCategory) {
+		this.recipeCategory = recipeCategory;
+	}
+	public String getFoodCategory() {
+		return foodCategory;
+	}
+	public void setFoodCategory(String foodCategory) {
+		this.foodCategory = foodCategory;
+	}
+	public List<String> getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(List<String> ingredients) {
+		this.ingredients = ingredients;
+	}
+	public String getPrepTime() {
+		return prepTime;
+	}
+	public void setPrepTime(String prepTime) {
+		this.prepTime = prepTime;
+	}
+	public String getCookTime() {
+		return cookTime;
+	}
+	public void setCookTime(String cookTime) {
+		this.cookTime = cookTime;
+	}
+	public List<String> getTag() {
+		return tag;
+	}
+	public void setTag(List<String> tag) {
+		this.tag = tag;
+	}
+	public String getServings() {
+		return servings;
+	}
+	public void setServings(String servings) {
+		this.servings = servings;
+	}
+	public String getCuisineCategory() {
+		return cuisineCategory;
+	}
+	public void setCuisineCategory(String cuisineCategory) {
+		this.cuisineCategory = cuisineCategory;
+	}
+	public String getRecipeDescription() {
+		return recipeDescription;
+	}
+	public void setRecipeDescription(String recipeDescription) {
+		this.recipeDescription = recipeDescription;
+	}
+	public List<String> getPreparationMethod() {
+		return preparationMethod;
+	}
+	public void setPreparationMethod(List<String> preparationMethod) {
+		this.preparationMethod = preparationMethod;
+	}
+	public void setNutrientValues(List<String> nutrientValues) {
+		this.nutrientValues = nutrientValues;
+	}
+	public List<String> getNutrientValues() {
+		return nutrientValues;
+	}
+	public String getRecipeUrl() {
+		return recipeUrl;
+	}
+	public void setRecipeUrl(String recipeUrl) {
+		this.recipeUrl = recipeUrl;
+	}
+//	@Override
+//	public String toString() {
+//		return "\nRecipeData [recipeId=" + recipeId + ", recipeName=" + recipeName + ", recipeCategory=" + recipeCategory
+//				+ ", foodCategory=" + foodCategory + ", ingredients=" + ingredients + ", prepTime=" + prepTime
+//				+ ", cookTime=" + cookTime + ", tag=" + tag + ", servings=" + servings + ", cuisineCategory="
+//				+ cuisineCategory + ", recipeDescription=" + recipeDescription + ", preparationMethod="
+//				+ preparationMethod + ", nutrientValues=" + nutrientValues + ", recipeUrl=" + recipeUrl + "]";
+//	}
+	
 	
 }
+//>>>>>>> origin/master
