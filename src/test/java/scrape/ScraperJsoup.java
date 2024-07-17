@@ -26,9 +26,9 @@ public class ScraperJsoup{
 	public List<RecipeData> extractRecipeData(String baseUrl) {
 	
 		List<RecipeData> dataList =  new ArrayList<>();
-		//String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		
-		String[] alphabets = {"B"};
+	//	String[] alphabets = {"W"};
 		
 		for(String a : alphabets) {
 		
@@ -66,30 +66,28 @@ public class ScraperJsoup{
 		try {
 			Document recipeDoc = Jsoup.connect(azurl).timeout(20000).get();
 			
-						
 			System.out.println("extractByAZ Connected: " + azurl);
 			
 			int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
 			
-			//int pageCount = 2;
+		//	int pageCount = 2;
 			
 			for (int i=1;i<=pageCount;i++) {
 				
 				pageurl = azurl + "&pageindex=" + i;
-				//extractionByPageIndex(dataList, pageurl);
-				extractionByPageIndexMemberOnly(dataList,pageurl);
+				extractionByPageIndexTarlaDalal(dataList, pageurl);
+				//extractionByPageIndexMemberOnly(dataList,pageurl);
 			
 			}		
 			
 		}catch(IOException e) {
 			try {
 				System.err.println("Exception retrying.." + pageurl);
-				extractionByPageIndex(dataList, pageurl);
+				extractionByPageIndexTarlaDalal(dataList, pageurl);
 			} catch (IOException e1) {
 				ERROR_MAP.put(pageurl,null);
 				e1.printStackTrace();
 			}
-			
 		}
 		
 		};
@@ -103,17 +101,20 @@ public class ScraperJsoup{
 		
 	}
 	
-	private void extractionByPageIndex(List<RecipeData> dataList, String pageurl) throws IOException {
+	private void extractionByPageIndexTarlaDalal(List<RecipeData> dataList, String pageurl) throws IOException {
 		
-		System.out.println(" extractionByPageIndex Connecting: " + pageurl);
+		System.out.println(" extractionByPageIndexTarlaDalal Connecting: " + pageurl);
+		
 		Document recipeDoc = Jsoup.connect(pageurl).timeout(20000).get();
-		System.out.println("extractionByPageIndex Connected: " + pageurl);
-		List<Element> elements = recipeDoc.select("div[class=rcc_recipecard]");
 		
+		System.out.println("extractionByPageIndexTarlaDalal Connected: " + pageurl);
+		
+		List<Element> elements = recipeDoc.select("div[class=rcc_recipecard]");
 		//System.out.println("Element" + elements);
 		
 		extractRecipe(dataList, elements);
 	}
+	
 
 	private void extractRecipe(List<RecipeData> dataList, List<Element> elements) {
 		for (Element e : elements) {

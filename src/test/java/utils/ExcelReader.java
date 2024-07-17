@@ -89,8 +89,9 @@ public class ExcelReader {
 			{	
 				criteriaList.add(criteriaCellValue.toLowerCase());
 			}
-	
+			
 		}
+		System.out.println("criteriaList: " +criteriaList);
 		return criteriaList;
 	}
 	
