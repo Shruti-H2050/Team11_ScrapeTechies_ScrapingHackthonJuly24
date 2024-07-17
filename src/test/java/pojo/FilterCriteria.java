@@ -2,7 +2,9 @@ package pojo;
 
 import java.util.ArrayList;
 import java.util.List;
+//import lombok.Data;
 
+//@Data
 public class FilterCriteria {
 
 	private List<String> lfvEliminate = new ArrayList<>();
@@ -16,21 +18,20 @@ public class FilterCriteria {
 	private List<String> lchfReceipeToAvoid = new ArrayList<>();
 	private List<String> lchfFoodProcessing = new ArrayList<>();
 	
+	private List<String> lfvAllergyList;
+	
 	
 	public List<String> getLfvEliminate() {
 		return lfvEliminate;
 	}
 
-
 	public void setLfvEliminate(List<String> lfvEliminate) {
 		this.lfvEliminate = lfvEliminate;
 	}
 
-
 	public List<String> getLfvAdd() {
 		return lfvAdd;
 	}
-
 
 	public void setLfvAdd(List<String> lfvAdd) {
 		this.lfvAdd = lfvAdd;
@@ -106,16 +107,21 @@ public class FilterCriteria {
 		this.lchfFoodProcessing = lchfFoodProcessing;
 	}
 
+	public List<String> getLfvAllergyList() {
+		return lfvAllergyList;
+	}
+
+	public void setLfvAllergyList(List<String> lfvAllergyList) {
+		this.lfvAllergyList = lfvAllergyList;
+	}
 
 	@Override
 	public String toString() {
 		return "FilterCriteria [lfvEliminate=" + lfvEliminate + ", lfvAdd=" + lfvAdd + ", lfvAddNotVegan="
 				+ lfvAddNotVegan + ", lfvReceipeToAvoid=" + lfvReceipeToAvoid + ", lfvOptionalRecipe="
 				+ lfvOptionalRecipe + ", lchfEliminate=" + lchfEliminate + ", lchfAdd=" + lchfAdd
-				+ ", lchfReceipeToAvoid=" + lchfReceipeToAvoid + ", lchfFoodProcessing=" + lchfFoodProcessing + "]";
+				+ ", lchfReceipeToAvoid=" + lchfReceipeToAvoid + ", lchfFoodProcessing=" + lchfFoodProcessing
+				+ ", lfvAllergyList=" + lfvAllergyList + "]";
 	}
-	
-	
-	
 	
 }

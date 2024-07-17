@@ -36,11 +36,15 @@ public class ExcelReader {
 		List<String> lfvOptionalRecipeList = getCriteriaList(workbook, "Final list for LFV Elimination ", 4,2);
 		
 		//LCHF Elimination Excel Data 
-				List<String> lchfEliminationList = getCriteriaList(workbook, "Final list for LCHFElimination ", 0, 2);
-				List<String> lchfAddList = getCriteriaList(workbook, "Final list for LCHFElimination ", 1,2);
-				List<String> lchfRecipesToAvoidList = getCriteriaList(workbook, "Final list for LCHFElimination ", 3,2);
-				List<String> lchfFoodProcessingList = getCriteriaList(workbook, "Final list for LCHFElimination ", 4,2);
-				
+		List<String> lchfEliminationList = getCriteriaList(workbook, "Final list for LCHFElimination ", 0, 2);
+		List<String> lchfAddList = getCriteriaList(workbook, "Final list for LCHFElimination ", 1,2);
+		List<String> lchfRecipesToAvoidList = getCriteriaList(workbook, "Final list for LCHFElimination ", 3,2);
+		List<String> lchfFoodProcessingList = getCriteriaList(workbook, "Final list for LCHFElimination ", 4,2);
+		
+		//LFV Allergy-Milk Excel Data
+		List<String> lfvAllergyList = getCriteriaList(workbook, "Filter -1 Allergies - Bonus Poi", 0, 1);
+		
+		System.out.println("Allergy: " + lfvAllergyList.get(0));
 		
        	//LFV Excel Extracted Data setting into Pojo
     	fc.setLfvEliminate(lfvEliminationList);
@@ -55,7 +59,10 @@ public class ExcelReader {
     	fc.setLchfReceipeToAvoid(lchfRecipesToAvoidList);
     	fc.setLchfFoodProcessing(lchfFoodProcessingList);
     	
-    	   	
+    	//LFV Allergy List from Excel
+    	fc.setLfvAllergyList(lfvAllergyList);
+    	
+    	
     	try {
 			workbook.close();
 		} catch (IOException e) {
@@ -87,11 +94,4 @@ public class ExcelReader {
 		return criteriaList;
 	}
 	
-//	public static void main(String args[]) throws IOException
-//	{
-//		ExcelReader re=new ExcelReader();
-//		System.out.println("Criteria:" + re.readCriteriaSheet());
-//				
-//	}
-
 }
