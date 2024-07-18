@@ -25,7 +25,7 @@ public class ScraperMain {
 
 	public static void main(String args[]) {
 		
-		boolean loadDataRequired = false;//Make it true to scrape from website
+		boolean loadDataRequired = false;//set it true to scrape data from the Website
 		
 		if(loadDataRequired) {
 			
@@ -33,7 +33,7 @@ public class ScraperMain {
 		}
 
 		generateAllReports();
-//		Get_tarfiles() ;
+		Get_tarfiles() ;
 	}
 	
 	
@@ -64,57 +64,115 @@ public class ScraperMain {
 		FilterCriteria fc = new ExcelReader().readCriteriaSheet();
 		
 		//Filter for LFV Elimination List 
-		List<RecipeData> lfvEliminationList = scrapedRecipeDataList.stream()
+		List<RecipeData> lfvEliminationListRecipe = scrapedRecipeDataList.stream()
 				.filter(rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(e.toLowerCase())))
 				.filter(rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getPreparationMethod()!= null && rd.getPreparationMethod().toString().toLowerCase().contains(e.toLowerCase())))
 				.filter(rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getRecipeDescription()!= null && rd.getRecipeDescription().toString().toLowerCase().contains(e.toLowerCase())))
 				.filter(rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getTag()!= null && rd.getTag().toString().toLowerCase().contains(e.toLowerCase())))
+				.filter(rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getRecipeName()!= null && rd.getRecipeName().toString().toLowerCase().contains(e.toLowerCase())))
+				.filter(rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getRecipeUrl()!= null && rd.getRecipeUrl().toString().toLowerCase().contains(e.toLowerCase())))
 				.collect(Collectors.toList());
 		
-		JSONReportGenerator.generateReport(lfvEliminationList, "reports/json/lfvEliminate.json");
-		HTMLReportGenerator.generateReport(lfvEliminationList, "reports/html/lfvEliminate.html", "LFV Elimination Report");
+		JSONReportGenerator.generateReport(lfvEliminationListRecipe, "recipe_reports/json/lfvEliminate.json");
+		HTMLReportGenerator.generateReport(lfvEliminationListRecipe, "recipe_reports/html/lfvEliminate.html", "LFV Elimination Report");
 			
 		//Filter for LFV Add List 
-		List<RecipeData> lfvAddList = lfvEliminationList.stream()
+		List<RecipeData> lfvAddListRecipe = lfvEliminationListRecipe.stream()
 				.filter(rd -> fc.getLfvAdd().stream().anyMatch(e -> rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(e)))
+				.filter(rd -> fc.getLfvAdd().stream().anyMatch(e -> rd.getPreparationMethod()!= null && rd.getPreparationMethod().toString().toLowerCase().contains(e)))
+				.filter(rd -> fc.getLfvAdd().stream().anyMatch(e -> rd.getRecipeDescription()!= null && rd.getRecipeDescription().toString().toLowerCase().contains(e)))
 				.collect(Collectors.toList());
 					
-		JSONReportGenerator.generateReport(lfvAddList, "reports/json/lfvAdd.json");
-		HTMLReportGenerator.generateReport(lfvAddList, "reports/html/lfvAdd.html", "LFV Add Report");
+		JSONReportGenerator.generateReport(lfvAddListRecipe, "recipe_reports/json/lfvAdd.json");
+		HTMLReportGenerator.generateReport(lfvAddListRecipe, "recipe_reports/html/lfvAdd.html", "LFV Add Report");
 		
 		//Filter LFV Add not Vegan List
-		List<RecipeData> lfvAddNotVeganList = lfvEliminationList.stream().filter(
-				rd -> fc.getLfvAddNotVegan().stream().anyMatch(e -> rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(e)))
+		List<RecipeData> lfvAddNotVeganList = lfvEliminationListRecipe.stream()
+				.filter(rd -> fc.getLfvAddNotVegan().stream().anyMatch(e -> rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(e)))
+				.filter(rd -> fc.getLfvAddNotVegan().stream().anyMatch(e -> rd.getPreparationMethod()!= null && rd.getPreparationMethod().toString().toLowerCase().contains(e)))
+				.filter(rd -> fc.getLfvAddNotVegan().stream().anyMatch(e -> rd.getRecipeDescription()!= null && rd.getRecipeDescription().toString().toLowerCase().contains(e)))
 				.collect(Collectors.toList()); 
 			
-		JSONReportGenerator.generateReport(lfvAddNotVeganList, "reports/json/lfvAddNotVeganList.json");
-		HTMLReportGenerator.generateReport(lfvAddNotVeganList, "reports/html/lfvAddNotVeganList.html", "LFV Add Not Vegan Report");
+		JSONReportGenerator.generateReport(lfvAddNotVeganList, "recipe_reports/json/lfvAddNotVeganList.json");
+		HTMLReportGenerator.generateReport(lfvAddNotVeganList, "recipe_reports/html/lfvAddNotVeganList.html", "LFV Add Not Vegan Report");
+		
+		// Filter LFV Recipes to Avoid
+		List<RecipeData> lfvReceipeToAvoidList = lfvEliminationListRecipe.stream()
+				.filter(rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getIngredients() != null && rd.getIngredients().toString().toLowerCase().contains(e.toLowerCase())))
+				.filter(rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getPreparationMethod() != null && rd.getPreparationMethod().toString().toLowerCase().contains(e.toLowerCase())))
+				.filter(rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getRecipeDescription() != null && rd.getRecipeDescription().toString().toLowerCase().contains(e.toLowerCase())))
+				.filter(rd -> !fc.getLfvEliminate().stream().anyMatch(e -> rd.getTag() != null && rd.getTag().toString().toLowerCase().contains(e.toLowerCase())))
+				.collect(Collectors.toList());	
 
+		JSONReportGenerator.generateReport(lfvReceipeToAvoidList, "recipe_reports/json/lfvReceipeToAvoid.json");
+		HTMLReportGenerator.generateReport(lfvReceipeToAvoidList, "recipe_reports/html/lfvReceipeToAvoid.html","LFV ReceipeToAvoid Report");
+
+		
 		//Filter for LFV-Allergy List
-		for (String allergyName : fc.getLfvAllergyList()){
+		for (String allergyName : fc.getAllergyList()){
 			
-		List<RecipeData> lfvAllergyList = lfvEliminationList.stream()
+		List<RecipeData> lfvAllergyList = lfvEliminationListRecipe.stream()
 				.filter(rd -> !(rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(allergyName.toLowerCase())))
 				.filter(rd -> !(rd.getPreparationMethod()!= null && rd.getPreparationMethod().toString().toLowerCase().contains(allergyName.toLowerCase())))
 				.filter(rd -> !(rd.getRecipeDescription() != null && rd.getRecipeDescription().toString().toLowerCase().contains(allergyName.toLowerCase())))
 				.filter(rd -> !(rd.getTag() != null && rd.getTag().toString().toLowerCase().contains(allergyName.toLowerCase())))
+				.filter(rd -> !(rd.getRecipeName() != null && rd.getRecipeName().toString().toLowerCase().contains(allergyName.toLowerCase())))
+				.filter(rd -> !(rd.getRecipeUrl() != null && rd.getRecipeUrl().toString().toLowerCase().contains(allergyName.toLowerCase())))
 				.collect(Collectors.toList());
 		
-		JSONReportGenerator.generateReport(lfvAllergyList, "reports/json/lfvAllergy"+ allergyName+".json");
-		HTMLReportGenerator.generateReport(lfvAllergyList, "reports/html/lfvAllergy"+ allergyName+".html", "LFV Allergy-"+ allergyName+" Report");
+		JSONReportGenerator.generateReport(lfvAllergyList, "recipe_reports/json/lfvAllergy"+ allergyName+".json");
+		HTMLReportGenerator.generateReport(lfvAllergyList, "recipe_reports/html/lfvAllergy"+ allergyName+".html", "LFV Allergy-"+ allergyName+" Report");
 		}
 			
+		//Filter for LCHF Elimination List
+		List<RecipeData> lchfEliminationListRecipe = scrapedRecipeDataList.stream()
+						.filter(rd -> !fc.getLchfEliminate().stream().anyMatch(e -> rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(e.toLowerCase())))
+						.filter(rd -> !fc.getLchfEliminate().stream().anyMatch(e -> rd.getPreparationMethod()!= null && rd.getPreparationMethod().toString().toLowerCase().contains(e.toLowerCase())))
+						.filter(rd -> !fc.getLchfEliminate().stream().anyMatch(e -> rd.getRecipeDescription()!= null && rd.getRecipeDescription().toString().toLowerCase().contains(e.toLowerCase())))
+						.filter(rd -> !fc.getLchfEliminate().stream().anyMatch(e -> rd.getTag()!= null && rd.getTag().toString().toLowerCase().contains(e.toLowerCase())))
+						.filter(rd -> !fc.getLchfEliminate().stream().anyMatch(e -> rd.getRecipeName()!= null &&  rd.getRecipeName().toString().toLowerCase().contains(e.toLowerCase())))
+						.filter(rd -> !fc.getLchfEliminate().stream().anyMatch(e -> rd.getRecipeUrl()!= null && rd.getRecipeUrl().toString().toLowerCase().contains(e.toLowerCase())))
+						.collect(Collectors.toList());
+								
+		JSONReportGenerator.generateReport(lchfEliminationListRecipe, "recipe_reports/json/LchfElimination.json");
+		HTMLReportGenerator.generateReport(lchfEliminationListRecipe, "recipe_reports/html/LchfElimination.html", "LCHF Elimination Report");
+									
+		//Filter for LCHF Add List
+		List<RecipeData> lchfAddListRecipe = lchfEliminationListRecipe.stream()
+						.filter(rd -> fc.getLfvAdd().stream().anyMatch(e -> rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(e)))
+						.collect(Collectors.toList());
+											
+		JSONReportGenerator.generateReport(lchfAddListRecipe, "recipe_reports/json/LchfAddList_Recipe.json");
+		HTMLReportGenerator.generateReport(lchfAddListRecipe, "recipe_reports/html/LchfAddList_Recipe.html", "LCHF Add Report");
 		
-		log.info("Elimination Filtered Count: " + lfvEliminationList.size());
-		log.info("Add Filtered Count: " + lfvAddList.size());
-//		log.info("lfvAllergyMilk Filtered Count: " + lfvAllergyList.size());
+		//Filter for LCHF-Allergy List
+		for (String allergyName : fc.getAllergyList()){
+					
+				List<RecipeData> lchfAllergyList = lchfEliminationListRecipe.stream()
+						.filter(rd -> !(rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(allergyName.toLowerCase())))
+						.filter(rd -> !(rd.getPreparationMethod()!= null && rd.getPreparationMethod().toString().toLowerCase().contains(allergyName.toLowerCase())))
+						.filter(rd -> !(rd.getRecipeDescription() != null && rd.getRecipeDescription().toString().toLowerCase().contains(allergyName.toLowerCase())))
+						.filter(rd -> !(rd.getTag() != null && rd.getTag().toString().toLowerCase().contains(allergyName.toLowerCase())))
+						.filter(rd -> !(rd.getRecipeName() != null && rd.getRecipeName().toString().toLowerCase().contains(allergyName.toLowerCase())))
+						.filter(rd -> !(rd.getRecipeUrl() != null && rd.getRecipeUrl().toString().toLowerCase().contains(allergyName.toLowerCase())))
+						.collect(Collectors.toList());
+				
+				JSONReportGenerator.generateReport(lchfAllergyList, "recipe_reports/json/lchfAllergy"+ allergyName+".json");
+				HTMLReportGenerator.generateReport(lchfAllergyList, "recipe_reports/html/lchfAllergy"+ allergyName+".html", "LCHF Allergy - "+ allergyName+" Report");
+				}
+		
+		
+		log.info("LFV Eliminated Recipe Count: " + lfvEliminationListRecipe.size());
+		log.info("LFV Added Recipe Count: " + lfvAddListRecipe.size());
+		log.info("LCHF Eliminated Recipe Count " + lchfEliminationListRecipe.size());
+		log.info("LCHF Added Recipe Count: " + lchfAddListRecipe.size());
 		
 	}
 
 	private static void Get_tarfiles() 
 	{
-		String srcPath_json = System.getProperty("user.dir")+"/reports/json";
-		String srcPath_Html = System.getProperty("user.dir")+"/reports/html";
+		String srcPath_json = System.getProperty("user.dir")+"/recipe_reports/json";
+		String srcPath_Html = System.getProperty("user.dir")+"/recipe_reports/html";
 		Tarfileextract.Archivetotar(srcPath_json);
 		log.info("Consolidated json reports are stored as Tar files");
 		Tarfileextract.Archivetotar(srcPath_Html);

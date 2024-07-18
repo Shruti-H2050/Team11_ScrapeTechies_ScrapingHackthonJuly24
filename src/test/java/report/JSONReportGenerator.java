@@ -50,7 +50,7 @@ public class JSONReportGenerator {
     public static List<RecipeData> getRecipeDataList(String fileName){
     	Gson gson = new GsonBuilder().setPrettyPrinting().create();
     	try {
-			return Arrays.asList(gson.fromJson(new InputStreamReader(JSONReportGenerator.class.getResourceAsStream("/" + fileName)), RecipeData[].class));
+			return Arrays.asList(gson.fromJson(new InputStreamReader(JSONReportGenerator.class.getResourceAsStream("/RecipeDB/" + fileName)), RecipeData[].class));
 		} catch (JsonSyntaxException | JsonIOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -38,9 +38,7 @@ public class ScraperJsoup{
 	public List<RecipeData> extractRecipeData(String baseUrl) {
 
 		List<RecipeData> dataList =  new ArrayList<>();
-		//String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-
-		String[] alphabets = {"P"};
+		String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 
 		for(String a : alphabets) {
 
@@ -167,7 +165,7 @@ public class ScraperJsoup{
 	}
 	private void loadCuisineCategories() {
 	    Properties properties = new Properties();
-	    try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("cuisine_categories.properties")) {
+	    try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("config/cuisine_categories.properties")) {
 	        if (inputStream == null) {
 	            log.error("Sorry, unable to find cuisine_categories.properties");
 	            return;
