@@ -3880,49 +3880,6 @@
     "recipeUrl": "jaipuria-vegetable-1062r"
   },
   {
-    "recipeId": "rcp2343",
-    "recipeName": "Jam Sauce",
-    "recipeCategory": "NA",
-    "foodCategory": "NA",
-    "ingredients": [
-      "strawberry jam",
-      "lemon juice"
-    ],
-    "prepTime": "2 mins",
-    "cookTime": "5 mins",
-    "tag": [
-      "Indian Dips / Sauces",
-      "Jams",
-      "Basic Indian Dessert Recipes",
-      "Boiled Indian recipes",
-      "Non-stick Pan"
-    ],
-    "servings": "Makes 0.5 cup (14 tbsp )",
-    "cuisineCategory": "Indian",
-    "recipeDescription": "When you want a gooey, sweet and tangy sauce, pronto, reach out for the jam bottle! Yes, this delicious Jam Sauce is made within minutes by cooking jam with lemon juice. While we have made it with strawberry jam, you can choose any of your favourite flavours instead. Just make sure you use the sauce immediately as it will get very thick upon cooling. This Jam Sauce is perfect to apply on Vanilla Sponge Cake , Cookies / Biscuits and you can also top it on Ice-creams .",
-    "preparationMethod": [
-      "Combine the jam, lemon juice and 2 tbsp of water in a broad non-stick pan, mix well and cook on a medium flame for 4 to 5 minutes, while stirring continuously.",
-      "Use as required."
-    ],
-    "nutrientValues": [
-      "Energy",
-      "33 cal",
-      "Protein",
-      "0.1 g",
-      "Carbohydrates",
-      "8 g",
-      "Fiber",
-      "0.3 g",
-      "Fat",
-      "0 g",
-      "Cholesterol",
-      "0 mg",
-      "Sodium",
-      "0.2 mg"
-    ],
-    "recipeUrl": "jam-sauce-2343r"
-  },
-  {
     "recipeId": "rcp3599",
     "recipeName": "Kachumber Salad, Gujarati Kachumber Salad",
     "recipeCategory": "NA",
@@ -7830,36 +7787,6 @@
     "recipeUrl": "sizzling-mushrooms-in-salsa-4851r"
   },
   {
-    "recipeId": "rcp2569",
-    "recipeName": "Soda Fountain ( Cooking with Kids)",
-    "recipeCategory": "NA",
-    "foodCategory": "Veg",
-    "ingredients": [
-      "raspberry syrup",
-      "vanilla ice-cream",
-      "soda"
-    ],
-    "prepTime": "5 mins",
-    "cookTime": "0 mins",
-    "tag": [
-      "No Cooking Veg Indian",
-      "Indian Birthday Party",
-      "Recipes Kids can make"
-    ],
-    "servings": "1Makes 1 servings",
-    "cuisineCategory": "Indian",
-    "recipeDescription": "Who doesn’t like to have a refreshing glass of soda on a warm summer afternoon? combine it with a dash of fruit syrup and a scoop of ice-cream and you have a fizzy, creamy soda fountain ready to be devoured.",
-    "preparationMethod": [
-      "",
-      "",
-      "Serve immediately."
-    ],
-    "nutrientValues": [
-      "Not Given"
-    ],
-    "recipeUrl": "soda-fountain---cooking-with-kids-2569r"
-  },
-  {
     "recipeId": "rcp36107",
     "recipeName": "Soothing Sleep Inducer Drink",
     "recipeCategory": "NA",
@@ -9425,38 +9352,6 @@
       "0.4 mg"
     ],
     "recipeUrl": "stir-fry-noodles-in-black-sauce-40575r"
-  },
-  {
-    "recipeId": "rcp37008",
-    "recipeName": "Strawberry Fan ( Fruit Carvings)",
-    "recipeCategory": "NA",
-    "foodCategory": "Veg",
-    "ingredients": [
-      "soufflés",
-      "cakes",
-      "puddings",
-      "ice-creams",
-      "sundaes",
-      "strawberry",
-      "knife"
-    ],
-    "prepTime": "20 mins",
-    "cookTime": "0 mins",
-    "tag": [
-      "No Cooking Veg Indian",
-      "Desserts for Entertaining"
-    ],
-    "servings": "1Makes 1 fan",
-    "cuisineCategory": "Indian",
-    "recipeDescription": "Hmmmm. . Here is a simple garnish for all your delicious desserts!",
-    "preparationMethod": [
-      "Place the strawberry on a chopping board and leaving around 2 to 3 mm from the broader end, make 5 to 6 cuts lengthwise slits till the end of the tip but do not cut completely.",
-      "Gently press on the broader end of the strawberry with your finger so that the slices fan out."
-    ],
-    "nutrientValues": [
-      "Not Given"
-    ],
-    "recipeUrl": "strawberry-fan--fruit-carvings-37008r"
   },
   {
     "recipeId": "rcp6427",
@@ -11459,35 +11354,6 @@
       "Not Given"
     ],
     "recipeUrl": "bengali-baingan-bhurta-13132r"
-  },
-  {
-    "recipeId": "rcp36517",
-    "recipeName": "Berry Patch",
-    "recipeCategory": "NA",
-    "foodCategory": "NA",
-    "ingredients": [
-      "vanilla ice-cream",
-      "cranberry",
-      "strawberry crush",
-      "blueberry"
-    ],
-    "prepTime": "5 mins",
-    "cookTime": "0 mins",
-    "tag": [
-      "Indian Mocktails"
-    ],
-    "servings": "4Makes 4 serving",
-    "cuisineCategory": "Indian",
-    "recipeDescription": "A tangy tongue twisting summer drink.",
-    "preparationMethod": [
-      "Combine all the ingredients and blend in a mixer till smooth.",
-      "Fill a hurricane glass with ice cubes and some blueberry dessert topping.",
-      "Pour and serve chilled."
-    ],
-    "nutrientValues": [
-      "Not Given"
-    ],
-    "recipeUrl": "berry-patch-36517r"
   },
   {
     "recipeId": "rcp10302",
@@ -16961,34 +16827,6 @@
       "Not Given"
     ],
     "recipeUrl": "mock-pizza-10533r"
-  },
-  {
-    "recipeId": "rcp13215",
-    "recipeName": "Mock-slushies",
-    "recipeCategory": "NA",
-    "foodCategory": "NA",
-    "ingredients": [
-      "strawberry jelly",
-      "boiling water",
-      "ginger ale"
-    ],
-    "prepTime": "",
-    "cookTime": "4 HRS.CHILLING TIME",
-    "tag": [],
-    "servings": "4",
-    "cuisineCategory": "NA",
-    "recipeDescription": "Substitute your favourite aerated drink for ginger ale. decorate with sliced fresh fruits.",
-    "preparationMethod": [
-      "Dissolve jelly in boiling water.",
-      "Add ginger ale.",
-      "Pour into an 8\" square pan and freeze till firm-about 4 hours.",
-      "Use an icecream scoop and fill icecream cups or cones.",
-      "Serve immediately."
-    ],
-    "nutrientValues": [
-      "Not Given"
-    ],
-    "recipeUrl": "mock-slushies-13215r"
   },
   {
     "recipeId": "rcp12572",
