@@ -18,7 +18,7 @@ public class FilterCriteria {
 	private List<String> lchfReceipeToAvoid = new ArrayList<>();
 	private List<String> lchfFoodProcessing = new ArrayList<>();
 	
-	private List<String> lfvAllergyList;
+	private List<String> AllergyList;
 	
 	
 	public List<String> getLfvEliminate() {
@@ -107,12 +107,12 @@ public class FilterCriteria {
 		this.lchfFoodProcessing = lchfFoodProcessing;
 	}
 
-	public List<String> getLfvAllergyList() {
-		return lfvAllergyList;
+	public List<String> getAllergyList() {
+		return AllergyList;
 	}
 
-	public void setLfvAllergyList(List<String> lfvAllergyList) {
-		this.lfvAllergyList = lfvAllergyList;
+	public void setAllergyList(List<String> allergyList) {
+		AllergyList = allergyList;
 	}
 
 	@Override
@@ -121,7 +121,7 @@ public class FilterCriteria {
 				+ lfvAddNotVegan + ", lfvReceipeToAvoid=" + lfvReceipeToAvoid + ", lfvOptionalRecipe="
 				+ lfvOptionalRecipe + ", lchfEliminate=" + lchfEliminate + ", lchfAdd=" + lchfAdd
 				+ ", lchfReceipeToAvoid=" + lchfReceipeToAvoid + ", lchfFoodProcessing=" + lchfFoodProcessing
-				+ ", lfvAllergyList=" + lfvAllergyList + "]";
+				+ ", AllergyList=" + AllergyList + "]";
 	}
-	
+
 }

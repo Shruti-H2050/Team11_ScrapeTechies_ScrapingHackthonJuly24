@@ -60,7 +60,7 @@ public class ExcelReader {
     	fc.setLchfFoodProcessing(lchfFoodProcessingList);
     	
     	//LFV Allergy List from Excel
-    	fc.setLfvAllergyList(lfvAllergyList);
+    	fc.setAllergyList(lfvAllergyList);
     	
     	
     	try {
