@@ -34,6 +34,7 @@ public class ScraperMain {
 		}
 
 		generateAllReports();
+		
 		Get_tarfiles() ;
 	}
 	
@@ -65,6 +66,8 @@ public class ScraperMain {
 		
 		//scrapedRecipeFullDataList from Tarladalal.com
 		List<RecipeData> scrapedRecipeDataList = JSONReportGenerator.getRecipeDataList("scrapedFullData.json");
+		
+		HTMLReportGenerator.generateReport(scrapedRecipeDataList, "scrapedFullData.html", "Scraped Full Data Report");
 		
 		log.info("Total Data:" + scrapedRecipeDataList.size());
 		//Fetch Filter Criteria from Excel

@@ -1,1 +1,317 @@
-{}
+{
+  "lajawab-mushrooms-11402r": {
+    "recipeId": "rcp11402",
+    "recipeName": "Lajawab Mushrooms",
+    "recipeUrl": "lajawab-mushrooms-11402r"
+  },
+  "idli-chaat-13566r": {
+    "recipeId": "rcp13566",
+    "recipeName": "Idli Chaat",
+    "recipeUrl": "idli-chaat-13566r"
+  },
+  "lajwab-mix-chaat-12638r": {
+    "recipeId": "rcp12638",
+    "recipeName": "Lajwab Mix Chaat",
+    "recipeUrl": "lajwab-mix-chaat-12638r"
+  },
+  "lahsun-til-tadka-kadhi-34906r": {
+    "recipeId": "rcp34906",
+    "recipeName": "Lahsun Til Tadka Kadhi",
+    "recipeUrl": "lahsun-til-tadka-kadhi-34906r"
+  },
+  "lajawab-sukha-channa-12610r": {
+    "recipeId": "rcp12610",
+    "recipeName": "Lajawab Sukha Channa",
+    "recipeUrl": "lajawab-sukha-channa-12610r"
+  },
+  "thai-stir-fried-noodles-with-tofu-469r": {
+    "recipeId": "rcp469",
+    "recipeName": "Thai Stir-Fried Noodles with Tofu",
+    "recipeUrl": "thai-stir-fried-noodles-with-tofu-469r"
+  },
+  "sev-2791r": {
+    "recipeId": "rcp2791",
+    "recipeName": "Sev",
+    "recipeUrl": "sev-2791r"
+  },
+  "vatana-muthia-nu-shaak--gujarati-recipe-590r": {
+    "recipeId": "rcp590",
+    "recipeName": "Vatana Muthia Nu Shaak ( Gujarati Recipe)",
+    "recipeUrl": "vatana-muthia-nu-shaak--gujarati-recipe-590r"
+  },
+  "macaroni-hot-pot--microwave-recipe--681r": {
+    "recipeId": "rcp681",
+    "recipeName": "Macaroni Hot Pot ( Microwave Recipe )",
+    "recipeUrl": "macaroni-hot-pot--microwave-recipe--681r"
+  },
+  "macaroni-in-cheesy-carrot-sauce--tiffin-treats-40371r": {
+    "recipeId": "rcp40371",
+    "recipeName": "Macaroni in Cheesy Carrot Sauce ( Tiffin Treats)",
+    "recipeUrl": "macaroni-in-cheesy-carrot-sauce--tiffin-treats-40371r"
+  },
+  "vatana-bateta-no-rotlo--gujarati-recipe-559r": {
+    "recipeId": "rcp559",
+    "recipeName": "Vatana Bateta No Rotlo ( Gujarati Recipe)",
+    "recipeUrl": "vatana-bateta-no-rotlo--gujarati-recipe-559r"
+  },
+  "sev-puri--chaat-recipe--2799r": {
+    "recipeId": "rcp2799",
+    "recipeName": "Sev Puri ( Chaat Recipe )",
+    "recipeUrl": "sev-puri--chaat-recipe--2799r"
+  },
+  "idli-fry-31695r": {
+    "recipeId": "rcp31695",
+    "recipeName": "Idli fry",
+    "recipeUrl": "idli-fry-31695r"
+  },
+  "idli-chaat-recipe-south-indian-snack-42148r": {
+    "recipeId": "rcp42148",
+    "recipeName": "Idli Chaat Recipe, South Indian Snack",
+    "recipeUrl": "idli-chaat-recipe-south-indian-snack-42148r"
+  },
+  "thai-sizzler-4838r": {
+    "recipeId": "rcp4838",
+    "recipeName": "Thai Sizzler",
+    "recipeUrl": "thai-sizzler-4838r"
+  },
+  "idli-chili-cheese-toast-34626r": {
+    "recipeId": "rcp34626",
+    "recipeName": "Idli Chili Cheese Toast",
+    "recipeUrl": "idli-chili-cheese-toast-34626r"
+  },
+  "vada-pav-recipe-|-mumbai-street-food-32693r": {
+    "recipeId": "rcp32693",
+    "recipeName": "Vada Pav Recipe | Mumbai Street Food",
+    "recipeUrl": "vada-pav-recipe-|-mumbai-street-food-32693r"
+  },
+  "idli-manchurian--by-chitvish-15989r": {
+    "recipeId": "rcp15989",
+    "recipeName": "Idli Manchurian By chitvish",
+    "recipeUrl": "idli-manchurian--by-chitvish-15989r"
+  },
+  "tofu-broccoli-and-red-cabbage-stir-fry-22332r": {
+    "recipeId": "rcp22332",
+    "recipeName": "Tofu, Broccoli and Red Cabbage Stir Fry",
+    "recipeUrl": "tofu-broccoli-and-red-cabbage-stir-fry-22332r"
+  },
+  "oats-coconut-milk-peanut-butter-healthy-smoothie-42329r": {
+    "recipeId": "rcp42329",
+    "recipeName": "Oats, Coconut Milk, Peanut Butter Healthy Smoothie",
+    "recipeUrl": "oats-coconut-milk-peanut-butter-healthy-smoothie-42329r"
+  },
+  "idli-curry-1673r": {
+    "recipeId": "rcp1673",
+    "recipeName": "Idli Curry",
+    "recipeUrl": "idli-curry-1673r"
+  },
+  "macaroni-soup-2369r": {
+    "recipeId": "rcp2369",
+    "recipeName": "Macaroni Soup",
+    "recipeUrl": "macaroni-soup-2369r"
+  },
+  "thai-stir-fried-noodles-8640r": {
+    "recipeId": "rcp8640",
+    "recipeName": "Thai Stir-fried Noodles",
+    "recipeUrl": "thai-stir-fried-noodles-8640r"
+  },
+  "macaroni-salad-with-sour-cream-34006r": {
+    "recipeId": "rcp34006",
+    "recipeName": "Macaroni Salad with Sour Cream",
+    "recipeUrl": "macaroni-salad-with-sour-cream-34006r"
+  },
+  "tofu-in-black-bean-sauce-41393r": {
+    "recipeId": "rcp41393",
+    "recipeName": "Tofu in Black Bean Sauce",
+    "recipeUrl": "tofu-in-black-bean-sauce-41393r"
+  },
+  "idli-chilli-chilli-idli-idli-snack-40034r": {
+    "recipeId": "rcp40034",
+    "recipeName": "Idli Chilli, Chilli Idli, Idli Snack",
+    "recipeUrl": "idli-chilli-chilli-idli-idli-snack-40034r"
+  },
+  "oats-uttapam-instant-vegetable-oats-uttapam-42495r": {
+    "recipeId": "rcp42495",
+    "recipeName": "Oats Uttapam, Instant Vegetable Oats Uttapam",
+    "recipeUrl": "oats-uttapam-instant-vegetable-oats-uttapam-42495r"
+  },
+  "achar-dip-achari-dip-22718r": {
+    "recipeId": "rcp22718",
+    "recipeName": "Achar Dip, Achari Dip",
+    "recipeUrl": "achar-dip-achari-dip-22718r"
+  },
+  "oats-tikki-oats-cutlet--healthy-oats-vegetable-tikki-35020r": {
+    "recipeId": "rcp35020",
+    "recipeName": "Oats Tikki, Oats Cutlet , Healthy Oats Vegetable Tikki",
+    "recipeUrl": "oats-tikki-oats-cutlet--healthy-oats-vegetable-tikki-35020r"
+  },
+  "vatana-bateta-no-rotlo-31046r": {
+    "recipeId": "rcp31046",
+    "recipeName": "Vatana Bateta No Rotlo",
+    "recipeUrl": "vatana-bateta-no-rotlo-31046r"
+  },
+  "idli-curd-vada-16468r": {
+    "recipeId": "rcp16468",
+    "recipeName": "Idli Curd Vada",
+    "recipeUrl": "idli-curd-vada-16468r"
+  },
+  "tofu-in-manchurian-sauce-41896r": {
+    "recipeId": "rcp41896",
+    "recipeName": "Tofu in Manchurian Sauce",
+    "recipeUrl": "tofu-in-manchurian-sauce-41896r"
+  },
+  "idli--mumbai-roadside-recipes-33388r": {
+    "recipeId": "rcp33388",
+    "recipeName": "Idli ( Mumbai Roadside Recipes)",
+    "recipeUrl": "idli--mumbai-roadside-recipes-33388r"
+  },
+  "varqui-paratha-30966r": {
+    "recipeId": "rcp30966",
+    "recipeName": "Varqui Paratha",
+    "recipeUrl": "varqui-paratha-30966r"
+  },
+  "lakshmi-bharathi-12906r": {
+    "recipeId": "rcp12906",
+    "recipeName": "Lakshmi Bharathi",
+    "recipeUrl": "lakshmi-bharathi-12906r"
+  },
+  "tofu-chila--eat-well-stay-well-recipes--33458r": {
+    "recipeId": "rcp33458",
+    "recipeName": "Tofu Chila ( Eat Well Stay Well Recipes )",
+    "recipeUrl": "tofu-chila--eat-well-stay-well-recipes--33458r"
+  },
+  "lakhnavi-kofta-curry-14035r": {
+    "recipeId": "rcp14035",
+    "recipeName": "Lakhnavi Kofta Curry",
+    "recipeUrl": "lakhnavi-kofta-curry-14035r"
+  },
+  "varkey-paratha-37755r": {
+    "recipeId": "rcp37755",
+    "recipeName": "Varkey Paratha",
+    "recipeUrl": "varkey-paratha-37755r"
+  },
+  "varkey-paratha---roti-and-subzis-239r": {
+    "recipeId": "rcp239",
+    "recipeName": "Varkey Paratha ( Roti and Subzis)",
+    "recipeUrl": "varkey-paratha---roti-and-subzis-239r"
+  },
+  "tofu-sprouts-and-vegetable-soup-31047r": {
+    "recipeId": "rcp31047",
+    "recipeName": "Tofu Sprouts and Vegetable Soup",
+    "recipeUrl": "tofu-sprouts-and-vegetable-soup-31047r"
+  },
+  "lajawaab-gobi-8817r": {
+    "recipeId": "rcp8817",
+    "recipeName": "Lajawaab Gobi",
+    "recipeUrl": "lajawaab-gobi-8817r"
+  },
+  "oats-roti-ibs-recipe-41516r": {
+    "recipeId": "rcp41516",
+    "recipeName": "Oats Roti, Ibs Recipe",
+    "recipeUrl": "oats-roti-ibs-recipe-41516r"
+  },
+  "vatana-makai-nu-shaak-4340r": {
+    "recipeId": "rcp4340",
+    "recipeName": "Vatana Makai Nu Shaak",
+    "recipeUrl": "vatana-makai-nu-shaak-4340r"
+  },
+  "vatana-makai-nu-shaak---jain-recipe-7537r": {
+    "recipeId": "rcp7537",
+    "recipeName": "Vatana Makai Nu Shaak ( Jain Recipe)",
+    "recipeUrl": "vatana-makai-nu-shaak---jain-recipe-7537r"
+  },
+  "thai-smoothie-mango-curd-and-coconut-milk-smoothie-36247r": {
+    "recipeId": "rcp36247",
+    "recipeName": "Thai Smoothie, Mango, Curd and Coconut Milk Smoothie",
+    "recipeUrl": "thai-smoothie-mango-curd-and-coconut-milk-smoothie-36247r"
+  },
+  "indian-style-veg-pizza-tava-and-oven-veg-pizza-41225r": {
+    "recipeId": "rcp41225",
+    "recipeName": "Indian Style Veg Pizza, Tava and Oven Veg Pizza",
+    "recipeUrl": "indian-style-veg-pizza-tava-and-oven-veg-pizza-41225r"
+  },
+  "tofu-stuffed-bhindi-22424r": {
+    "recipeId": "rcp22424",
+    "recipeName": "Tofu Stuffed Bhindi",
+    "recipeUrl": "tofu-stuffed-bhindi-22424r"
+  },
+  "macaroni-salad-veg-macaroni-salad-2143r": {
+    "recipeId": "rcp2143",
+    "recipeName": "Macaroni Salad, Veg Macaroni Salad",
+    "recipeUrl": "macaroni-salad-veg-macaroni-salad-2143r"
+  },
+  "sev-biranj-1993r": {
+    "recipeId": "rcp1993",
+    "recipeName": "Sev Biranj",
+    "recipeUrl": "sev-biranj-1993r"
+  },
+  "idli-delight-8823r": {
+    "recipeId": "rcp8823",
+    "recipeName": "Idli Delight",
+    "recipeUrl": "idli-delight-8823r"
+  },
+  "idli-manchurian-with-a-twist-16537r": {
+    "recipeId": "rcp16537",
+    "recipeName": "Idli Manchurian with A Twist",
+    "recipeUrl": "idli-manchurian-with-a-twist-16537r"
+  },
+  "thai-satay-paneer-wrap--wraps-and-rolls-32678r": {
+    "recipeId": "rcp32678",
+    "recipeName": "Thai Satay Paneer Wrap ( Wraps and Rolls)",
+    "recipeUrl": "thai-satay-paneer-wrap--wraps-and-rolls-32678r"
+  },
+  "indian-veg-pizza-crackers-no-bake-pizza-crackers-512r": {
+    "recipeId": "rcp512",
+    "recipeName": "Indian Veg Pizza Crackers, No Bake Pizza Crackers",
+    "recipeUrl": "indian-veg-pizza-crackers-no-bake-pizza-crackers-512r"
+  },
+  "fansi-dhokli--gujarati-recipe-587r": {
+    "recipeId": "rcp587",
+    "recipeName": "Fansi Dhokli ( Gujarati Recipe)",
+    "recipeUrl": "fansi-dhokli--gujarati-recipe-587r"
+  },
+  "indian-veg-seekh-kebab-without-tandoor-or-oven-30880r": {
+    "recipeId": "rcp30880",
+    "recipeName": "Indian Veg Seekh Kebab Without Tandoor Or Oven",
+    "recipeUrl": "indian-veg-seekh-kebab-without-tandoor-or-oven-30880r"
+  },
+  "macaroni-in-a-hurry-156r": {
+    "recipeId": "rcp156",
+    "recipeName": "Macaroni in A Hurry",
+    "recipeUrl": "macaroni-in-a-hurry-156r"
+  },
+  "macaroni-hot-pot-2204r": {
+    "recipeId": "rcp2204",
+    "recipeName": "Macaroni Hot Pot",
+    "recipeUrl": "macaroni-hot-pot-2204r"
+  },
+  "oats-vegetable-khichdi-healthy-oats-khichdi-for-weight-loss-22327r": {
+    "recipeId": "rcp22327",
+    "recipeName": "Oats Vegetable Khichdi, Healthy Oats Khichdi for Weight Loss",
+    "recipeUrl": "oats-vegetable-khichdi-healthy-oats-khichdi-for-weight-loss-22327r"
+  },
+  "macaroni-pasta-in-a-mug-42941r": {
+    "recipeId": "rcp42941",
+    "recipeName": "Macaroni Pasta in A Mug",
+    "recipeUrl": "macaroni-pasta-in-a-mug-42941r"
+  },
+  "indo-chinese-hot-and-sour-sauce-22559r": {
+    "recipeId": "rcp22559",
+    "recipeName": "Indo Chinese Hot and Sour Sauce",
+    "recipeUrl": "indo-chinese-hot-and-sour-sauce-22559r"
+  },
+  "sev-murmura-sev-kurmura-sev-mamra-41306r": {
+    "recipeId": "rcp41306",
+    "recipeName": "Sev Murmura, Sev Kurmura, Sev Mamra",
+    "recipeUrl": "sev-murmura-sev-kurmura-sev-mamra-41306r"
+  },
+  "oats-upma---breakfast-recipes-38987r": {
+    "recipeId": "rcp38987",
+    "recipeName": "Oats Upma ( Breakfast Recipes)",
+    "recipeUrl": "oats-upma---breakfast-recipes-38987r"
+  },
+  "thai-stir--fried-noodles-with-tofu-diabetic-friendly-recipe-33672r": {
+    "recipeId": "rcp33672",
+    "recipeName": "Thai Stir- Fried Noodles with Tofu, Diabetic Friendly Recipe",
+    "recipeUrl": "thai-stir--fried-noodles-with-tofu-diabetic-friendly-recipe-33672r"
+  }
+}
