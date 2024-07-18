@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import lombok.extern.log4j.Log4j2;
 import pojo.FilterCriteria;
 import pojo.RecipeData;
 import report.HTMLReportGenerator;
@@ -12,7 +16,10 @@ import report.JSONReportGenerator;
 import utils.ExcelReader;
 import utils.Tarfileextract;
 
+//@Log4j2
 public class ScraperMain {
+	
+	private static final Logger log = LogManager.getLogger(ScraperMain.class);
 
 	public static Map<String, RecipeData> ERROR_MAP = new HashMap<>();
 
@@ -26,7 +33,7 @@ public class ScraperMain {
 		}
 
 		generateAllReports();
-		Get_tarfiles() ;
+//		Get_tarfiles() ;
 	}
 	
 	
@@ -37,9 +44,9 @@ public class ScraperMain {
 
 		List<RecipeData> recipeData = sj.extractRecipeData(baseUrl);
 		
-		System.out.println("Data:" + recipeData);
-		System.out.println("RecipeSize: " + recipeData.size());
-		System.out.println("ERRORS " + ERROR_MAP);
+		log.info("Data:" + recipeData);
+		log.info("RecipeSize: " + recipeData.size());
+		log.info("ERRORS " + ERROR_MAP);
 
 		HTMLReportGenerator.generateReport(recipeData, "scrapedFullData.html", "Scraped Full Data Report");
 		JSONReportGenerator.generateReport(recipeData, "scrapedFullData.json");
@@ -52,7 +59,7 @@ public class ScraperMain {
 		//scrapedRecipeFullDataList from Tarladalal.com
 		List<RecipeData> scrapedRecipeDataList = JSONReportGenerator.getRecipeDataList("scrapedFullData.json");
 		
-		System.out.println("Total Data:" + scrapedRecipeDataList.size());
+		log.info("Total Data:" + scrapedRecipeDataList.size());
 		//Fetch Filter Criteria from Excel
 		FilterCriteria fc = new ExcelReader().readCriteriaSheet();
 		
@@ -78,7 +85,7 @@ public class ScraperMain {
 		//Filter LFV Add not Vegan List
 		List<RecipeData> lfvAddNotVeganList = lfvEliminationList.stream().filter(
 				rd -> fc.getLfvAddNotVegan().stream().anyMatch(e -> rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(e)))
-				.collect(Collectors.toList());
+				.collect(Collectors.toList()); 
 			
 		JSONReportGenerator.generateReport(lfvAddNotVeganList, "reports/json/lfvAddNotVeganList.json");
 		HTMLReportGenerator.generateReport(lfvAddNotVeganList, "reports/html/lfvAddNotVeganList.html", "LFV Add Not Vegan Report");
@@ -86,10 +93,10 @@ public class ScraperMain {
 		//Filter for LFV-Allergy List
 		for (String allergyName : fc.getLfvAllergyList()){
 			
-		List<RecipeData> lfvAllergyList = lfvEliminationList.stream().filter(
-				rd -> !(rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(allergyName.toLowerCase())))
+		List<RecipeData> lfvAllergyList = lfvEliminationList.stream()
+				.filter(rd -> !(rd.getIngredients()!= null && rd.getIngredients().toString().toLowerCase().contains(allergyName.toLowerCase())))
 				.filter(rd -> !(rd.getPreparationMethod()!= null && rd.getPreparationMethod().toString().toLowerCase().contains(allergyName.toLowerCase())))
-				.filter(rd -> !(rd.getRecipeDescription() != null && rd.getRecipeCategory().toString().toLowerCase().contains(allergyName.toLowerCase())))
+				.filter(rd -> !(rd.getRecipeDescription() != null && rd.getRecipeDescription().toString().toLowerCase().contains(allergyName.toLowerCase())))
 				.filter(rd -> !(rd.getTag() != null && rd.getTag().toString().toLowerCase().contains(allergyName.toLowerCase())))
 				.collect(Collectors.toList());
 		
@@ -98,9 +105,9 @@ public class ScraperMain {
 		}
 			
 		
-		System.out.println("Elimination Filtered Count: " + lfvEliminationList.size());
-		System.out.println("Add Filtered Count: " + lfvAddList.size());
-//		System.out.println("lfvAllergyMilk Filtered Count: " + lfvAllergyMilkList.size());
+		log.info("Elimination Filtered Count: " + lfvEliminationList.size());
+		log.info("Add Filtered Count: " + lfvAddList.size());
+//		log.info("lfvAllergyMilk Filtered Count: " + lfvAllergyList.size());
 		
 	}
 
@@ -109,9 +116,9 @@ public class ScraperMain {
 		String srcPath_json = System.getProperty("user.dir")+"/reports/json";
 		String srcPath_Html = System.getProperty("user.dir")+"/reports/html";
 		Tarfileextract.Archivetotar(srcPath_json);
-		System.out.println("Consolidated json reports are stored as Tar files");
+		log.info("Consolidated json reports are stored as Tar files");
 		Tarfileextract.Archivetotar(srcPath_Html);
-		System.out.println("Consolidated HTML reports are stored as Tar files");
+		log.info("Consolidated HTML reports are stored as Tar files");
 		
 	}
 
