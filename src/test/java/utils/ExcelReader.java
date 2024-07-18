@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -19,7 +20,7 @@ public class ExcelReader {
 	public  FilterCriteria readCriteriaSheet()
 	{	
 		FilterCriteria fc = new FilterCriteria();
-	    		
+		
 		InputStream is = ExcelReader.class.getResourceAsStream("/testdata/IngredientsAndComorbidities-ScrapperHackathon.xlsx");
 		
 		XSSFWorkbook workbook = null;
@@ -28,18 +29,43 @@ public class ExcelReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		//LFV Elimination Excel Data
 		List<String> lfvEliminationList = getCriteriaList(workbook, "Final list for LFV Elimination ", 0, 2);
-		List<String> lfvaddList = getCriteriaList(workbook, "Final list for LFV Elimination ", 1,2);
+		List<String> lfvAddList = getCriteriaList(workbook, "Final list for LFV Elimination ", 1,2);
 		List<String> lfvAddNotVeganList = getCriteriaList(workbook, "Final list for LFV Elimination ", 2,2);
 		List<String> lfvRecipesToAvoidList = getCriteriaList(workbook, "Final list for LFV Elimination ", 3,2);
 		List<String> lfvOptionalRecipeList = getCriteriaList(workbook, "Final list for LFV Elimination ", 4,2);
+		//List<String> lfvOptionalRecipeList = new ArrayList<String>(
+				   // Arrays.asList( "tea", "without sugar"));
+				
+		//LCHF Elimination Excel Data 
+		List<String> lchfEliminationList = getCriteriaList(workbook, "Final list for LCHFElimination ", 0, 2);
+		List<String> lchfAddList = getCriteriaList(workbook, "Final list for LCHFElimination ", 1,2);
+		List<String> lchfRecipesToAvoidList = getCriteriaList(workbook, "Final list for LCHFElimination ", 3,2);
+		List<String> lchfFoodProcessingList = getCriteriaList(workbook, "Final list for LCHFElimination ", 4,2);
 		
-       	
+		//LFV Allergy-Milk Excel Data
+		List<String> lfvAllergyList = getCriteriaList(workbook, "Filter -1 Allergies - Bonus Poi", 0, 1);
+		
+		System.out.println("Allergy: " + lfvAllergyList.get(0));
+		
+       	//LFV Excel Extracted Data setting into Pojo
     	fc.setLfvEliminate(lfvEliminationList);
-    	fc.setLfvAdd(lfvaddList);
+    	fc.setLfvAdd(lfvAddList);
     	fc.setLfvAddNotVegan(lfvAddNotVeganList);
-    	fc.setReceipeAvoid(lfvRecipesToAvoidList);
-    	fc.setOptionalRecipe(lfvOptionalRecipeList);
+    	fc.setLfvReceipeToAvoid(lfvRecipesToAvoidList);
+    	fc.setLfvOptionalRecipe(lfvOptionalRecipeList);
+    	
+    	//LCHF Excel Extracted Data setting into Pojo
+    	fc.setLchfEliminate(lchfEliminationList);
+    	fc.setLchfAdd(lchfAddList);
+    	fc.setLchfReceipeToAvoid(lchfRecipesToAvoidList);
+    	fc.setLchfFoodProcessing(lchfFoodProcessingList);
+    	
+    	//LFV Allergy List from Excel
+    	fc.setLfvAllergyList(lfvAllergyList);
+    	
     	
     	try {
 			workbook.close();
@@ -50,7 +76,8 @@ public class ExcelReader {
     	return fc;
 
 	}
-
+	
+	//Fetch the Elimination Excel Full Data
 	private List<String> getCriteriaList(XSSFWorkbook workbook, String sheetName, int colIndex, int rowIndex) 
 	{	
 		List<String> criteriaList= new ArrayList<>();
@@ -71,11 +98,4 @@ public class ExcelReader {
 		return criteriaList;
 	}
 	
-//	public static void main(String args[]) throws IOException
-//	{
-//		ExcelReader re=new ExcelReader();
-//		System.out.println("Criteria:" + re.readCriteriaSheet());
-//				
-//	}
-
 }

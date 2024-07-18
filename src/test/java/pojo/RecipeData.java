@@ -9,17 +9,18 @@ public class RecipeData {
 	private String recipeId;
 	private String recipeName;
 	private String recipeCategory;
-  private String foodCategory;
-  private List<String> ingredients;
-  private String prepTime;
+    private String foodCategory;
+    private List<String> ingredients;
+    private String prepTime;
 	private String cookTime;
 	private List<String> tag;
 	private String servings;
-  private String cuisineCategory;
-  private String recipeDescription;
-  private List<String> preparationMethod;
-  private List<String> nutrientValues;	
+    private String cuisineCategory;
+    private String recipeDescription;
+    private List<String> preparationMethod;
+    private List<String> nutrientValues;	
 	private String recipeUrl;
+	
 	public String getRecipeId() {
 		return recipeId;
 	}
@@ -89,14 +90,14 @@ public class RecipeData {
 	public List<String> getPreparationMethod() {
 		return preparationMethod;
 	}
-	public void setPreparationMethod(List<String> methodlist) {
-		this.preparationMethod = methodlist;
+	public void setPreparationMethod(List<String> preparationMethod) {
+		this.preparationMethod = preparationMethod;
+	}
+	public void setNutrientValues(List<String> nutrientValues) {
+		this.nutrientValues = nutrientValues;
 	}
 	public List<String> getNutrientValues() {
 		return nutrientValues;
-	}
-	public void setNutrientValues(List<String> nutrientValues2) {
-		this.nutrientValues = nutrientValues2;
 	}
 	public String getRecipeUrl() {
 		return recipeUrl;

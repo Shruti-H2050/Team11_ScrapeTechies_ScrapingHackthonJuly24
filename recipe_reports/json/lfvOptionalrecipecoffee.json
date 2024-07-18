@@ -1,0 +1,35 @@
+[
+  {
+    "recipeId": "rcp16015",
+    "recipeName": "Melya, Expresso Coffee with Honey",
+    "recipeCategory": "NA",
+    "foodCategory": "NA",
+    "ingredients": [
+      "coffee",
+      "honey",
+      "cocoa powder",
+      "cream"
+    ],
+    "prepTime": "15 mins",
+    "cookTime": "5 mins",
+    "tag": [
+      "Indian Coffee Recipes"
+    ],
+    "servings": "1Makes 1 servings",
+    "cuisineCategory": "Indian",
+    "recipeDescription": "Melya is a coffee based hot beverage prepared by pouring hot coffee over honey and then serving it with cream.",
+    "preparationMethod": [
+      "Brew some expresso coffee.",
+      "Then in a coffee mug, place the unsweetened cocoa.",
+      "Cover a teaspoon with honey and drizzle into the mug.",
+      "While the coffee is brewing, stir honey and cocoa. It will appear as if cocoa and honey will never mix but suddenly it will.",
+      "It will turn into/ like dark chocolate sauce.",
+      "Pour the hot coffee over the honey and stir to dissolve.",
+      "Serve hot with cream."
+    ],
+    "nutrientValues": [
+      "Not Given"
+    ],
+    "recipeUrl": "melya-expresso-coffee-with-honey-16015r"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "recipeId": "rcp40182",
+    "recipeName": "Orange Green Tea",
+    "recipeCategory": "NA",
+    "foodCategory": "NA",
+    "ingredients": [
+      "green tea bag",
+      "orange rind",
+      "honey"
+    ],
+    "prepTime": "2 mins",
+    "cookTime": "0 mins",
+    "tag": [
+      "Tea, Chai",
+      "High Tea Party",
+      "Healthy Drinks Hot Beverages"
+    ],
+    "servings": "1Makes 1 glass",
+    "cuisineCategory": "NA",
+    "recipeDescription": "Ready in minutes, this refreshing green tea preparation is sure to boost your spirits instantaneously. With the fruity aroma and tangy flavour of orange, this honey tinted drink is a pleasure to see, smell and savour. No wonder, it feels as if all your senses are thoroughly refreshed by the very first sip. Light and springy, this Orange Green Tea is perfect for any weather, any place, any day!",
+    "preparationMethod": [
+      "Pour 1 cup of hot water in a mug, place green tea bag in the mug and allow it to stand for 1 minute.",
+      "Add the orange zest and honey and mix well.",
+      "Serve immediately."
+    ],
+    "nutrientValues": [
+      "Energy",
+      "30 cal",
+      "Protein",
+      "0 g",
+      "Carbohydrates",
+      "8.2 g",
+      "Fiber",
+      "0 g",
+      "Fat",
+      "0 g",
+      "Cholesterol",
+      "0 mg",
+      "Sodium",
+      "0.4 mg"
+    ],
+    "recipeUrl": "orange-green-tea-40182r"
+  },
+  {
+    "recipeId": "rcp36730",
+    "recipeName": "Mango Iced Tea",
+    "recipeCategory": "NA",
+    "foodCategory": "NA",
+    "ingredients": [
+      "green tea water",
+      "mango pulp",
+      "mango essence",
+      "mangoes",
+      "cardamom (elaichi) powder",
+      "rose petals",
+      "rose petals",
+      "mint leaves (phudina)",
+      "ice"
+    ],
+    "prepTime": "10 mins",
+    "cookTime": "5 mins",
+    "tag": [
+      "Tea, Chai",
+      "Indian Mocktails"
+    ],
+    "servings": "4Makes 4 servings",
+    "cuisineCategory": "Indian",
+    "recipeDescription": "Green tea and mango come together to give a healthy tea.",
+    "preparationMethod": [
+      "Combine the mango essence, cardamom powder with green tea and mix well. keep aside.",
+      "ADd some ice cubes in a serving glass and pour the green tea.",
+      "Add the mango pulp and mango pieces.",
+      "Garnish it lightly with rose and mint leaves.",
+      "Serve chilled."
+    ],
+    "nutrientValues": [
+      "Not Given"
+    ],
+    "recipeUrl": "mango-iced-tea-36730r"
+  }
+]
