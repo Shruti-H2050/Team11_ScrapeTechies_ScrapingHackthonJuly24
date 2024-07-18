@@ -53,7 +53,6 @@ import pojo.RecipeData;
 	public List<RecipeData> extractRecipeData() {
 
 		List<RecipeData> dataList =  new ArrayList<>();
-	//	String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 
 		for(String a : alphabets) {
 
@@ -97,13 +96,11 @@ import pojo.RecipeData;
 
 			int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
 
-			//int pageCount = 2;
-
 			for (int i=1;i<=pageCount;i++) {
 
 				pageurl = azurl + "&pageindex=" + i;
 				extractionByPageIndexTarlaDalal(dataList, pageurl);
-				//extractionByPageIndexMemberOnly(dataList,pageurl);
+				extractionByPageIndexMemberOnly(dataList,pageurl);
 
 			}		
 
