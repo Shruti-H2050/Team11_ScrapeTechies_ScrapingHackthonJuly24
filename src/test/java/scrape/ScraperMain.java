@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import lombok.extern.log4j.Log4j2;
 import pojo.FilterCriteria;
 import pojo.RecipeData;
 import report.HTMLReportGenerator;
@@ -15,6 +18,7 @@ import utils.Tarfileextract;
 
 public class ScraperMain {
 
+	private static final Logger log = LogManager.getLogger(ScraperMain.class);
 	public static Map<String, RecipeData> ERROR_MAP = new HashMap<>();
 
 	public static void main(String args[]) {
@@ -43,22 +47,27 @@ public class ScraperMain {
 
 		List<RecipeData> recipeData = sj.extractRecipeData();
 		
-		System.out.println("Data:" + recipeData);
-		System.out.println("RecipeSize: " + recipeData.size());
-		System.out.println("ERRORS " + ERROR_MAP);
+		log.info("Data:" + recipeData);
+		log.info("RecipeSize: " + recipeData.size());
+		log.info("ERRORS " + ERROR_MAP);
 
 		HTMLReportGenerator.generateReport(recipeData, "scrapedFullData.html", "Scraped Full Data Report");
 		JSONReportGenerator.generateReport(recipeData, "scrapedFullData.json");
-		JSONReportGenerator.generateErrorReport(ERROR_MAP, "ERRORData.json");
+		//JSONReportGenerator.generateErrorReport(ERROR_MAP, "ERRORData.json");
 
 	}
 
 	private static void generateAllReports() {
 		
 		//scrapedRecipeFullDataList from Tarladalal.com
+		try {
 		List<RecipeData> scrapedRecipeDataList = JSONReportGenerator.getRecipeDataList("scrapedFullData.json");
+		if (scrapedRecipeDataList == null) {
+            throw new NullPointerException("Recipe data list is null");
+        }
 		
-		System.out.println("Total Data:" + scrapedRecipeDataList.size());
+		
+		log.info("Total Data:" + scrapedRecipeDataList.size());
 		//Fetch Filter Criteria from Excel
 		FilterCriteria fc = new ExcelReader().readCriteriaSheet();
 		
@@ -107,19 +116,20 @@ public class ScraperMain {
 		System.out.println("Elimination Filtered Count: " + lfvEliminationList.size());
 		System.out.println("Add Filtered Count: " + lfvAddList.size());
 //		System.out.println("lfvAllergyMilk Filtered Count: " + lfvAllergyMilkList.size());
-		
+		}catch(NullPointerException e)
+		{
+			log.error("Null pointer exception occured");
+		}
 	}
 
 	private static void Get_tarfiles() 
 	{
 		String srcPath_json = System.getProperty("user.dir") + "/"+ ConfigLoader.getProperty("reportFilePath") + "json";
         String srcPath_Html = System.getProperty("user.dir") + "/"+ ConfigLoader.getProperty("reportFilePath") + "html";
-//		String srcPath_json = System.getProperty("user.dir")+"/reports/json";
-//		String srcPath_Html = System.getProperty("user.dir")+"/reports/html";
 		Tarfileextract.Archivetotar(srcPath_json);
-		System.out.println("Consolidated json reports are stored as Tar files");
+		log.info("Consolidated json reports are stored as Tar files");
 		Tarfileextract.Archivetotar(srcPath_Html);
-		System.out.println("Consolidated HTML reports are stored as Tar files");
+		log.info("Consolidated HTML reports are stored as Tar files");
 		
 	}
 
