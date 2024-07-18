@@ -52,7 +52,6 @@ public class JSONReportGenerator {
     	try {
 			return Arrays.asList(gson.fromJson(new InputStreamReader(JSONReportGenerator.class.getResourceAsStream("/RecipeDB/" + fileName)), RecipeData[].class));
 		} catch (JsonSyntaxException | JsonIOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	return null;

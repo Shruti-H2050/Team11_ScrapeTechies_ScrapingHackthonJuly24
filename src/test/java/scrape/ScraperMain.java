@@ -8,11 +8,12 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import lombok.extern.log4j.Log4j2;
+//import lombok.extern.log4j.Log4j2;
 import pojo.FilterCriteria;
 import pojo.RecipeData;
 import report.HTMLReportGenerator;
 import report.JSONReportGenerator;
+import utils.ConfigLoader;
 import utils.ExcelReader;
 import utils.Tarfileextract;
 
@@ -25,7 +26,7 @@ public class ScraperMain {
 
 	public static void main(String args[]) {
 		
-		boolean loadDataRequired = false;//set it true to scrape data from the Website
+		boolean loadDataRequired = ConfigLoader.isLoadDataRequired();//Make it true in config.properties file to scrape from the website
 		
 		if(loadDataRequired) {
 			
@@ -33,16 +34,23 @@ public class ScraperMain {
 		}
 
 		generateAllReports();
+		
 		Get_tarfiles() ;
 	}
 	
 	
 	private static void loadDataFromWebsite() {
 
-		String baseUrl = "https://www.tarladalal.com/RecipeAtoZ.aspx";
-		ScraperJsoup sj = new ScraperJsoup();
+		String baseUrl = ConfigLoader.getProperty("baseUrl");
+		String[] alphabets = ConfigLoader.getAlphabetsList();
+        int threadPoolSize = ConfigLoader.getThreadPoolSize();
+        int time = ConfigLoader.getTime();
+        String beginsWithParam = ConfigLoader.getBeginsWithParam();
+        String recipeUrlPrefix = ConfigLoader.getRecipeUrlPrefix();
+		ScraperJsoup sj = new ScraperJsoup(baseUrl, alphabets, threadPoolSize, time, beginsWithParam, recipeUrlPrefix);
 
-		List<RecipeData> recipeData = sj.extractRecipeData(baseUrl);
+
+		List<RecipeData> recipeData = sj.extractRecipeData();
 		
 		log.info("Data:" + recipeData);
 		log.info("RecipeSize: " + recipeData.size());
@@ -58,6 +66,8 @@ public class ScraperMain {
 		
 		//scrapedRecipeFullDataList from Tarladalal.com
 		List<RecipeData> scrapedRecipeDataList = JSONReportGenerator.getRecipeDataList("scrapedFullData.json");
+		
+		HTMLReportGenerator.generateReport(scrapedRecipeDataList, "scrapedFullData.html", "Scraped Full Data Report");
 		
 		log.info("Total Data:" + scrapedRecipeDataList.size());
 		//Fetch Filter Criteria from Excel

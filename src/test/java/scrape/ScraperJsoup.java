@@ -25,24 +25,38 @@ import lombok.extern.log4j.Log4j2;
 import pojo.RecipeData;
 
 //@Log4j2
-public class ScraperJsoup{
-	private static final Logger log = LogManager.getLogger(ScraperJsoup.class);
 
-	//ExecutorService exec = Executors.newFixedThreadPool(20);
-	private Map<String, List<String>> cuisineCategoryMap = new HashMap<>();
 
-    public ScraperJsoup() {
-        loadCuisineCategories();
-    }
 
-	public List<RecipeData> extractRecipeData(String baseUrl) {
+    public class ScraperJsoup{
+    	
+    	private static final Logger log = LogManager.getLogger(ScraperJsoup.class);
+    	
+    	private Map<String, List<String>> cuisineCategoryMap = new HashMap<>();
+    	private String baseUrl;
+        private String[] alphabets;
+        private int threadPoolSize;
+        private int time;
+        private String beginsWithParam;
+        private String recipeUrlPrefix;
+    	//ExecutorService exec = Executors.newFixedThreadPool(threadPoolSize);
+        public ScraperJsoup(String baseUrl, String[] alphabets, int threadPoolSize, int time, String beginsWithParam, String recipeUrlPrefix) {
+            this.baseUrl = baseUrl;
+            this.alphabets = alphabets;
+            this.threadPoolSize = threadPoolSize;
+            this.time = time;
+            this.beginsWithParam = beginsWithParam;
+            this.recipeUrlPrefix = recipeUrlPrefix;
+            loadCuisineCategories();
+        }
+        
+	public List<RecipeData> extractRecipeData() {
 
 		List<RecipeData> dataList =  new ArrayList<>();
-		String[] alphabets = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 
 		for(String a : alphabets) {
 
-			String azurl = baseUrl + "?beginswith=" + a;
+			String azurl = baseUrl + beginsWithParam + a;
 
 			extractByAZ(azurl,dataList);
 
@@ -57,7 +71,7 @@ public class ScraperJsoup{
 			dataMap.put("__EVENTTARGET", "ctl00$cntleftpanel$rbltdmem$1");
 			dataMap.put("__EVENTARGUMENT", "");
 			log.info("connecting.. " + pageurl);
-			List<Element> elements  = Jsoup.connect(pageurl).data(dataMap).timeout(20000).post().select("div[class=rcc_recipecard]");
+			List<Element> elements  = Jsoup.connect(pageurl).data(dataMap).timeout(time).post().select("div[class=rcc_recipecard]");
 			
 			log.info("connected..");
 			extractRecipe(dataList, elements);
@@ -75,20 +89,18 @@ public class ScraperJsoup{
 		Runnable task = () -> {
 			String pageurl=azurl;
 		try {
-			Document recipeDoc = Jsoup.connect(azurl).timeout(20000).get();
+			Document recipeDoc = Jsoup.connect(azurl).timeout(time).get();
 
 
 			log.info("extractByAZ Connected: " + azurl);
 
 			int pageCount =Integer.parseInt(recipeDoc.select("a[class=respglink]").last().text());
 
-			//int pageCount = 2;
-
 			for (int i=1;i<=pageCount;i++) {
 
 				pageurl = azurl + "&pageindex=" + i;
 				extractionByPageIndexTarlaDalal(dataList, pageurl);
-				//extractionByPageIndexMemberOnly(dataList,pageurl);
+				extractionByPageIndexMemberOnly(dataList,pageurl);
 
 			}		
 
@@ -118,7 +130,7 @@ public class ScraperJsoup{
 		
 		log.info(" extractionByPageIndexTarlaDalal Connecting: " + pageurl);
 
-		Document recipeDoc = Jsoup.connect(pageurl).timeout(20000).get();
+		Document recipeDoc = Jsoup.connect(pageurl).timeout(time).get();
 		
 		log.info("extractionByPageIndexTarlaDalal Connected: " + pageurl);
 		
@@ -197,9 +209,9 @@ public class ScraperJsoup{
     }
 
 	private void extractFields(RecipeData rd) throws IOException {
-		log.info(" recipeUrl Connecting: " + "https://www.tarladalal.com/"+ rd.getRecipeUrl());
+		log.info(" recipeUrl Connecting: " + recipeUrlPrefix + rd.getRecipeUrl());
 
-		Document ingredientsDoc = Jsoup.connect("https://www.tarladalal.com/"+ rd.getRecipeUrl()).timeout(20000).get();
+		Document ingredientsDoc = Jsoup.connect(recipeUrlPrefix + rd.getRecipeUrl()).timeout(time).get();
 		log.info(" recipeUrl Connected: ");
 
 		//Extracting Ingredients
