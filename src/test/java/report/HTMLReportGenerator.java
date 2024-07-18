@@ -4,9 +4,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import pojo.RecipeData;
 
 public class HTMLReportGenerator {
+	private static final Logger log = LogManager.getLogger(HTMLReportGenerator.class);
 
     public static void generateReport(List<RecipeData> data, String fileName, String title) {
         StringBuilder htmlContent = new StringBuilder();
@@ -62,6 +66,6 @@ public class HTMLReportGenerator {
             e.printStackTrace();
         }
 
-        System.out.println("HTML report generated successfully.");
+        log.info("HTML report generated successfully.");
     }
 }

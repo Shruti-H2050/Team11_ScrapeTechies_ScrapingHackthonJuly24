@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -15,6 +18,8 @@ import com.google.gson.JsonSyntaxException;
 import pojo.RecipeData;
 
 public class JSONReportGenerator {
+	
+	private static final Logger log = LogManager.getLogger(JSONReportGenerator.class);
 
     public static void generateReport(List<RecipeData> data, String fileName) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -26,7 +31,7 @@ public class JSONReportGenerator {
             e.printStackTrace();
         }
 
-        System.out.println("JSON report generated successfully.");
+        log.info("JSON report generated successfully.");
     }
     
     public static void generateErrorReport(Map<String,RecipeData> data, String fileName) {
@@ -39,7 +44,7 @@ public class JSONReportGenerator {
             e.printStackTrace();
         }
 
-        System.out.println("JSON ERROR report generated successfully.");
+        log.info("JSON ERROR report generated successfully.");
     }
     
     public static List<RecipeData> getRecipeDataList(String fileName){

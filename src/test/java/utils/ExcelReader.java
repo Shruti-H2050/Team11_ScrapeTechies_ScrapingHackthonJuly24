@@ -1,12 +1,12 @@
 package utils;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -14,6 +14,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import pojo.FilterCriteria;
 
 public class ExcelReader {
+	private static final Logger log = LogManager.getLogger(ExcelReader.class);
 	
 	public  FilterCriteria readCriteriaSheet()
 	{	
@@ -44,7 +45,6 @@ public class ExcelReader {
 		//LFV Allergy-Milk Excel Data
 		List<String> lfvAllergyList = getCriteriaList(workbook, "Filter -1 Allergies - Bonus Poi", 0, 1);
 		
-		System.out.println("Allergy: " + lfvAllergyList.get(0));
 		
        	//LFV Excel Extracted Data setting into Pojo
     	fc.setLfvEliminate(lfvEliminationList);
@@ -91,7 +91,7 @@ public class ExcelReader {
 			}
 			
 		}
-		System.out.println("criteriaList: " +criteriaList);
+		log.info("criteriaList: " +criteriaList);
 		return criteriaList;
 	}
 	
